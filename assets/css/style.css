@@ -522,6 +522,42 @@ main { position: relative; z-index: 2; }
   margin: 0;
 }
 
+/* Family tree */
+.family-tree-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin: 0 auto 1.5rem;
+}
+
+.family-node {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 10px;
+  min-width: 170px;
+}
+
+.family-node.male {
+  background: rgba(76, 105, 210, 0.16);
+  border: 1px solid rgba(147, 175, 230, 0.5);
+  color: #cfd9ff;
+}
+
+.family-node.female {
+  background: rgba(210, 90, 130, 0.16);
+  border: 1px solid rgba(230, 150, 175, 0.5);
+  color: #ffd6e2;
+}
+
+.family-node.root {
+  border-width: 2px;
+  border-color: var(--purple-300);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.45);
+}
+
 /* Split sections */
 .split {
   display: grid;
