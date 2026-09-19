@@ -104,17 +104,17 @@
       main: main,
       branches: branches,
       born: performance.now(),
-      life: 260 + Math.random() * 160,
+      life: 500 + Math.random() * 350,
       flicker: Math.random() > 0.4
     });
 
     if (flash) {
       flash.style.transitionDuration = "40ms";
-      flash.style.opacity = String(0.22 + Math.random() * 0.18);
+      flash.style.opacity = String(0.38 + Math.random() * 0.28);
       setTimeout(function () {
-        flash.style.transitionDuration = "220ms";
+        flash.style.transitionDuration = "320ms";
         flash.style.opacity = "0";
-      }, 60 + Math.random() * 60);
+      }, 110 + Math.random() * 100);
     }
   }
 
@@ -133,15 +133,18 @@
       if (s.flicker && Math.random() > 0.85) alpha *= 0.3;
       alpha = Math.max(0, Math.min(1, alpha));
 
-      var core = "rgba(245, 243, 255, " + alpha + ")";
-      var glow = "rgba(196, 181, 253, " + (alpha * 0.7) + ")";
+      var core = "rgba(255, 255, 255, " + alpha + ")";
+      var glow = "rgba(196, 181, 253, " + Math.min(1, alpha * 0.95) + ")";
+      var outerGlow = "rgba(139, 92, 246, " + (alpha * 0.6) + ")";
 
-      drawBoltPath(s.main, 3.5, glow, 24);
-      drawBoltPath(s.main, 1.6, core, 8);
+      drawBoltPath(s.main, 6, outerGlow, 42);
+      drawBoltPath(s.main, 3.2, glow, 26);
+      drawBoltPath(s.main, 1.8, core, 10);
 
       s.branches.forEach(function (branch) {
-        drawBoltPath(branch, 2, glow, 16);
-        drawBoltPath(branch, 1, core, 6);
+        drawBoltPath(branch, 3.5, outerGlow, 28);
+        drawBoltPath(branch, 2, glow, 18);
+        drawBoltPath(branch, 1.1, core, 8);
       });
     }
 
