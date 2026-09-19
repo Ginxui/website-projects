@@ -503,21 +503,16 @@ main { position: relative; z-index: 2; }
   margin: 0;
 }
 
-.promo-branch-step {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.promo-branch-rank {
-  font-family: var(--font-display);
-  color: var(--text-main);
-  font-size: 1.05rem;
-}
-
-.promo-branch-req {
+.promo-branch-line {
   color: var(--text-muted);
   font-size: 0.95rem;
+  margin: 0;
+}
+
+.promo-branch-line strong {
+  font-family: var(--font-display);
+  color: var(--text-main);
+  font-weight: 700;
 }
 
 .promo-note {
@@ -525,12 +520,6 @@ main { position: relative; z-index: 2; }
   font-size: 0.9rem;
   font-style: italic;
   margin: 0;
-}
-
-.promo-signed {
-  margin-top: auto;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--border-soft);
 }
 
 /* Split sections */
