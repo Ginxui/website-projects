@@ -123,8 +123,8 @@
     });
 
     if (flash) {
-      flash.style.transitionDuration = "40ms";
-      flash.style.opacity = String(0.38 + Math.random() * 0.28);
+      flash.style.transitionDuration = "60ms";
+      flash.style.opacity = String(0.14 + Math.random() * 0.12);
       setTimeout(function () {
         flash.style.transitionDuration = "320ms";
         flash.style.opacity = "0";

@@ -38,6 +38,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.7;
   overflow-x: hidden;
+  text-align: center;
 }
 
 img, svg { display: block; max-width: 100%; }
