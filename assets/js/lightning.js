@@ -18,6 +18,20 @@
   }
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Sigil coin flip
+  var sigilWrap = document.querySelector(".sigil-wrap");
+  if (sigilWrap && !reduceMotion) {
+    sigilWrap.addEventListener("click", function () {
+      sigilWrap.classList.remove("is-flipping");
+      void sigilWrap.offsetWidth; // restart the animation on repeat clicks
+      sigilWrap.classList.add("is-flipping");
+    });
+    sigilWrap.addEventListener("animationend", function () {
+      sigilWrap.classList.remove("is-flipping");
+    });
+  }
+
   var canvas = document.getElementById("storm-canvas");
   if (!canvas || reduceMotion) return;
 

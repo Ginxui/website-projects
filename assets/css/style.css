@@ -147,11 +147,26 @@ main { position: relative; z-index: 2; }
   max-width: 1000px;
   margin: 0 auto;
   padding: 5rem 1.5rem;
+  position: relative;
+  background: var(--bg-void);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-400) 25%, var(--purple-400) 75%, transparent);
+  opacity: 0.4;
 }
 
 .section-alt {
-  background: linear-gradient(180deg, rgba(76,29,149,0.08), rgba(76,29,149,0));
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.18), transparent 65%), var(--bg-deep);
   max-width: none;
+  box-shadow: inset 0 1px 0 var(--border-soft), inset 0 -1px 0 var(--border-soft);
 }
 
 .section-alt > * {
@@ -203,6 +218,27 @@ main { position: relative; z-index: 2; }
   width: 150px;
   margin-bottom: 1.75rem;
   filter: drop-shadow(0 0 26px rgba(124, 58, 237, 0.55));
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.sigil-wrap svg {
+  transform-style: preserve-3d;
+  transition: filter 0.2s ease;
+}
+
+.sigil-wrap:hover svg {
+  filter: brightness(1.15);
+}
+
+.sigil-wrap.is-flipping svg {
+  animation: coin-flip 0.7s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes coin-flip {
+  0%   { transform: rotateY(0deg) scale(1); }
+  50%  { transform: rotateY(180deg) scale(1.08); }
+  100% { transform: rotateY(360deg) scale(1); }
 }
 
 .eyebrow {
