@@ -19,6 +19,21 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Knight helm reveal while the Hierarchy Structure section is in view
+  var knightHelm = document.getElementById("knightHelm");
+  var hierarchySection = document.getElementById("hierarchy-structure");
+  if (knightHelm && hierarchySection && "IntersectionObserver" in window) {
+    var helmObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          knightHelm.classList.toggle("visible", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    helmObserver.observe(hierarchySection);
+  }
+
   // Sigil coin flip
   var sigilWrap = document.querySelector(".sigil-wrap");
   if (sigilWrap && !reduceMotion) {

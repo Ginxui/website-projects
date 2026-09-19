@@ -65,6 +65,31 @@ img, svg { display: block; max-width: 100%; }
   transition: opacity 90ms ease-out;
 }
 
+.knight-helm {
+  position: fixed;
+  top: 50%;
+  right: 3vw;
+  transform: translateY(-50%) translateX(30px);
+  width: 190px;
+  color: var(--purple-300);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  z-index: 3;
+  filter: drop-shadow(0 0 22px rgba(124, 58, 237, 0.3));
+}
+
+.knight-helm svg { width: 100%; height: auto; display: block; }
+
+.knight-helm.visible {
+  opacity: 0.3;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 1300px) {
+  .knight-helm { display: none; }
+}
+
 /* Header / Nav */
 .site-header {
   position: sticky;
