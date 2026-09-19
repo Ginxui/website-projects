@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Dondarrion | Lords of Blackhaven</title>
+<meta name="description" content="House Dondarrion of Blackhaven — sigil, history, words, and notable lords. A purple banner split by black lightning.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%233b0764%22/><path d=%22M55 5 L30 55 L48 55 L40 95 L75 45 L55 45 Z%22 fill=%22%23000%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<canvas id="storm-canvas" aria-hidden="true"></canvas>
+<div id="flash-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">&#9889;</span>
+      House Dondarrion
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#sigil">Sigil &amp; Words</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#members">Notable Lords</a></li>
+      <li><a href="#seat">Blackhaven</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="sigil-wrap">
+        <svg class="sigil sigil-hero" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion: a purple field split by a forked black lightning bolt">
+          <defs>
+            <radialGradient id="fieldGrad" cx="50%" cy="42%" r="70%">
+              <stop offset="0%" stop-color="#6d28d9"/>
+              <stop offset="55%" stop-color="#4c1d95"/>
+              <stop offset="100%" stop-color="#2e1065"/>
+            </radialGradient>
+            <filter id="boltGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2.2" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <circle cx="100" cy="100" r="96" fill="url(#fieldGrad)" stroke="#c4b5fd" stroke-width="3"/>
+          <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="1" opacity="0.35"/>
+          <path filter="url(#boltGlow)" d="M118 22 L70 108 L96 108 L80 178 L142 90 L110 90 Z" fill="#0a0512" stroke="#f5f3ff" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <p class="eyebrow">Stormlands &middot; Seat of Blackhaven</p>
+      <h1 class="house-title">HOUSE DONDARRION</h1>
+      <p class="motto">&ldquo;Swift and Sure&rdquo;</p>
+      <p class="hero-blurb">
+        An ancient line of the Stormlands, older than the Andal sails that broke upon Westeros&rsquo;
+        shores. Their banner is purple, split by a forked bolt of black lightning &mdash;
+        and in dark hours, that lightning has answered.
+      </p>
+      <div class="hero-actions">
+        <a href="#history" class="btn btn-primary">Read the History</a>
+        <a href="#members" class="btn btn-ghost">Lord Beric Dondarrion</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" class="section">
+    <h2 class="section-title">Overview</h2>
+    <div class="fact-grid">
+      <div class="fact-card">
+        <span class="fact-label">Seat</span>
+        <span class="fact-value">Blackhaven</span>
+      </div>
+      <div class="fact-card">
+        <span class="fact-label">Region</span>
+        <span class="fact-value">The Stormlands</span>
+      </div>
+      <div class="fact-card">
+        <span class="fact-label">Words</span>
+        <span class="fact-value">Swift and Sure</span>
+      </div>
+      <div class="fact-card">
+        <span class="fact-label">Sigil</span>
+        <span class="fact-value">Purple, a forked lightning bolt sable</span>
+      </div>
+      <div class="fact-card">
+        <span class="fact-label">Founded</span>
+        <span class="fact-value">First Men era, pre-Andal</span>
+      </div>
+      <div class="fact-card">
+        <span class="fact-label">Notable Lord</span>
+        <span class="fact-value">Beric Dondarrion, the Lightning Lord</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="sigil" class="section section-alt">
+    <h2 class="section-title">Sigil &amp; Words</h2>
+    <div class="split">
+      <div class="split-visual">
+        <div class="banner-frame">
+          <svg class="sigil sigil-banner" viewBox="0 0 160 220" role="img" aria-label="Banner of House Dondarrion">
+            <defs>
+              <linearGradient id="bannerGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5b21b6"/>
+                <stop offset="100%" stop-color="#2e1065"/>
+              </linearGradient>
+            </defs>
+            <path d="M10 10 H150 V180 L80 215 L10 180 Z" fill="url(#bannerGrad)" stroke="#c4b5fd" stroke-width="2"/>
+            <path d="M96 30 L52 118 L78 118 L62 190 L118 96 L88 96 Z" fill="#050208" stroke="#ede9fe" stroke-width="1.2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="split-text">
+        <p>
+          The Dondarrion banner is a field of deep purple torn through by a single forked
+          bolt of black lightning &mdash; a strike frozen mid-fall, sudden and absolute.
+          Heralds of the Stormlands say the purple stands for the storm-dark sky, and the
+          lightning for a house that moves before its enemies expect it.
+        </p>
+        <p>
+          Their words, <em>&ldquo;Swift and Sure,&rdquo;</em> are less a boast than a
+          method: Dondarrion knights favor speed and certainty over numbers, striking
+          hard and vanishing before the thunder catches up to the flash.
+        </p>
+        <p>
+          No house's arms have felt more literal in the last hundred years. During the
+          War of the Five Kings, that lightning bolt stopped being only a sigil.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" class="section">
+    <h2 class="section-title">History</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-tag">Ancient Days</span>
+        <h3>First Men of the Stormlands</h3>
+        <p>
+          Unlike many storm lords who trace their line to Andal conquerors or to the old
+          Storm Kings of House Durrandon, House Dondarrion claims descent from the First
+          Men who held these hills and marshes long before the Andals ever raised sail.
+          Blackhaven predates most of its neighbors, a dark keep weathering centuries of
+          storms rolling in off Shipbreaker Bay and down from the Dornish Marches.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-tag">Long Peace</span>
+        <h3>Wardens of the Marches</h3>
+        <p>
+          For generations, Dondarrion lords served as a quiet buffer between the
+          Stormlands and Dorne, their small keep never as wealthy as Storm's End nor as
+          famous as the great seats of the realm &mdash; respected rather than renowned,
+          which suited them.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-tag">War of the Five Kings</span>
+        <h3>The Lightning Lord Rides</h3>
+        <p>
+          That changed with Lord Beric Dondarrion. Sent by Eddard Stark to bring the
+          King's justice to the Mountain, Gregor Clegane, Beric was cut down and left for
+          dead &mdash; and returned. Again, and again, kept from death's door by the
+          fire priest Thoros of Myr, he rode on as the Lightning Lord, and the
+          purple-and-black banner became the mark of the Brotherhood without Banners, a
+          band that answered to no king and rode for the smallfolk the war had forgotten.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-tag">Legacy</span>
+        <h3>A Name Larger Than Its Seat</h3>
+        <p>
+          House Dondarrion remains a minor house by lands and gold, but its name now
+          carries further than Blackhaven's walls ever could &mdash; carried, fittingly,
+          on the same lightning that marks its banner.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="section section-alt">
+    <h2 class="section-title">Notable Lords</h2>
+    <div class="member-card">
+      <div class="member-sigil" aria-hidden="true">&#9889;</div>
+      <div class="member-info">
+        <h3>Lord Beric Dondarrion</h3>
+        <p class="member-epithet">The Lightning Lord</p>
+        <p>
+          Once a promising young lord and a favorite at tourneys, Beric Dondarrion was
+          dispatched by Lord Eddard Stark to arrest Ser Gregor Clegane at the outset of
+          the War of the Five Kings. Cut off, ambushed, and killed in the field, he was
+          brought back by Thoros of Myr's prayers to the Lord of Light &mdash; the first
+          of several deaths he would shrug off in the years that followed.
+        </p>
+        <p>
+          As leader of the Brotherhood without Banners, Beric turned a scattered band of
+          leaderless soldiers into a guerrilla force that struck lords and smallfolk-
+          preying outlaws alike, all under the purple-and-lightning banner of his house.
+          Each resurrection cost him more of himself, yet he rode on, swift and sure,
+          until the fire in him finally passed to another.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="seat" class="section">
+    <h2 class="section-title">Blackhaven</h2>
+    <div class="split split-reverse">
+      <div class="split-text">
+        <p>
+          Blackhaven sits in the Stormlands near the Dornish Marches, a dark, weathered
+          castle built to watch the passes rather than to impress. It has never held the
+          wealth of Storm's End or the size of Nightsong, but its position has made its
+          lords into border-wardens by necessity.
+        </p>
+        <p>
+          Storms roll through often here, and locals swear the lightning strikes the old
+          keep more than any other hold in the region &mdash; a coincidence the Dondarrions
+          have never much minded, and a smallfolk legend they've never much denied.
+        </p>
+      </div>
+      <div class="split-visual">
+        <div class="keep-card">
+          <div class="keep-glow" aria-hidden="true"></div>
+          <p class="keep-quote">
+            &ldquo;The storm does not ask leave to break. Neither do we.&rdquo;
+          </p>
+          <p class="keep-attribution">&mdash; attributed to a Lord of Blackhaven</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    A fan tribute to House Dondarrion of <em>A Song of Ice and Fire</em> / <em>Game of Thrones</em>,
+    created by George R. R. Martin and HBO. Unofficial, non-commercial, made for the love of a good storm.
+  </p>
+</footer>
+
+<script src="assets/js/lightning.js"></script>
+</body>
+</html>
