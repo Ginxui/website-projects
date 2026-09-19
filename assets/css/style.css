@@ -183,7 +183,7 @@ main { position: relative; z-index: 2; }
   color: var(--purple-200);
   letter-spacing: 0.04em;
   text-align: center;
-  margin: 0 0 2.5rem;
+  margin: 0 auto 2.5rem;
   text-transform: uppercase;
   position: relative;
 }
