@@ -33,83 +33,130 @@
 <div id="flash-overlay" aria-hidden="true"></div>
 
 <div id="knightHelm" class="knight-helm" aria-hidden="true">
-  <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
+  <svg viewBox="0 0 220 340" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
     <defs>
-      <linearGradient id="helmMetal" x1="15%" y1="0%" x2="85%" y2="100%">
-        <stop offset="0%" stop-color="#f5f3ff"/>
-        <stop offset="45%" stop-color="#c4b5fd"/>
-        <stop offset="100%" stop-color="#4c1d95"/>
+      <linearGradient id="helmMetal" x1="10%" y1="0%" x2="95%" y2="100%">
+        <stop offset="0%" stop-color="#fbf9ff"/>
+        <stop offset="40%" stop-color="#c4b5fd"/>
+        <stop offset="100%" stop-color="#3b0764"/>
       </linearGradient>
     </defs>
 
-    <!-- Apex ridge -->
-    <path d="M92 14 L100 6 L108 14" stroke="url(#helmMetal)" stroke-width="2"/>
+    <!-- Plume: layered wispy strands -->
+    <g opacity="0.92" stroke="url(#helmMetal)">
+      <path d="M108 20 C 92 -30 55 -55 8 -46 C 40 -50 68 -38 84 -14" stroke-width="1.4"/>
+      <path d="M104 22 C 84 -24 52 -42 14 -34 C 44 -38 70 -24 84 0" stroke-width="1.3"/>
+      <path d="M100 26 C 82 -12 54 -24 24 -18 C 50 -22 70 -10 80 10" stroke-width="1.2"/>
+      <path d="M96 30 C 82 4 60 -6 36 0 C 56 -4 72 6 78 22" stroke-width="1.1"/>
+      <path d="M96 6 C 84 -20 58 -36 30 -34" stroke-width="0.7" opacity="0.6"/>
+      <path d="M92 16 C 80 -4 58 -18 34 -18" stroke-width="0.7" opacity="0.6"/>
+      <path d="M88 26 C 78 10 60 0 40 2" stroke-width="0.7" opacity="0.6"/>
+    </g>
 
-    <!-- Plume -->
-    <path d="M100 8 C 90 -16 68 -24 45 -14 C 65 -16 82 -8 92 10" stroke="url(#helmMetal)" stroke-width="1.8" opacity="0.85"/>
+    <!-- Skull dome -->
+    <path d="M110 18
+             C 78 18 58 46 56 82
+             C 55 96 57 108 62 118
+             L 158 118
+             C 163 108 165 96 164 82
+             C 162 46 142 18 110 18 Z"
+          stroke="url(#helmMetal)" stroke-width="2.6"/>
 
-    <!-- Outer silhouette: sugarloaf great helm, tapering point to flared base -->
-    <path d="M100 8
-             C 85 8 72 40 68 95
-             C 66 130 62 160 60 180
-             C 56 200 50 215 48 228
-             Q 100 246 152 228
-             C 150 215 144 200 140 180
-             C 138 160 134 130 132 95
-             C 128 40 115 8 100 8
-             Z" stroke="url(#helmMetal)" stroke-width="2.6"/>
+    <!-- Comb ridge -->
+    <path d="M110 18 L110 116" stroke="url(#helmMetal)" stroke-width="2" opacity="0.8"/>
+    <path d="M100 24 Q110 16 120 24" stroke="url(#helmMetal)" stroke-width="1.6"/>
 
-    <!-- Highlight sliver (left, catching light) -->
-    <path d="M80 38 C 75 70 70 105 67 135 C 71 104 77 70 86 40 Z" fill="#f5f3ff" opacity="0.3"/>
-    <!-- Shadow sliver (right, turning from light) -->
-    <path d="M120 38 C 125 70 130 105 133 135 C 129 104 123 70 114 40 Z" fill="#2e1065" opacity="0.35"/>
+    <!-- Skull rivets -->
+    <circle cx="70" cy="60" r="2" fill="url(#helmMetal)"/>
+    <circle cx="150" cy="60" r="2" fill="url(#helmMetal)"/>
+    <circle cx="63" cy="95" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="157" cy="95" r="1.8" fill="url(#helmMetal)"/>
 
-    <!-- Seam rivets -->
-    <circle cx="69" cy="60" r="2.2" fill="url(#helmMetal)"/>
-    <circle cx="63" cy="150" r="2.2" fill="url(#helmMetal)"/>
-    <circle cx="51" cy="212" r="2.2" fill="url(#helmMetal)"/>
-    <circle cx="131" cy="60" r="2.2" fill="url(#helmMetal)"/>
-    <circle cx="137" cy="150" r="2.2" fill="url(#helmMetal)"/>
-    <circle cx="149" cy="212" r="2.2" fill="url(#helmMetal)"/>
+    <!-- Scrollwork flourishes (skull) -->
+    <path d="M74 44 C 78 39 85 39 87 44 C 89 49 85 53 80 52 C 76 51 75 48 77 46" stroke="url(#helmMetal)" stroke-width="1"/>
+    <path d="M146 44 C 142 39 135 39 133 44 C 131 49 135 53 140 52 C 144 51 145 48 143 46" stroke="url(#helmMetal)" stroke-width="1"/>
+    <path d="M96 30 C 100 26 106 26 108 30" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
+    <path d="M112 30 C 114 26 120 26 124 30" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
 
-    <!-- Reinforcing cross band -->
-    <path d="M100 20 L100 208" stroke="url(#helmMetal)" stroke-width="6.5" opacity="0.95"/>
-    <path d="M68 95 L132 95" stroke="url(#helmMetal)" stroke-width="6.5" opacity="0.95"/>
+    <!-- Cross-hatch shading, shadow side of dome -->
+    <g stroke="#2e1065" stroke-width="0.7" opacity="0.55">
+      <path d="M138 60 l8 8 M142 70 l8 8 M144 82 l8 8 M142 94 l8 8"/>
+      <path d="M144 56 l8 8 M148 66 l8 8 M150 78 l8 8 M148 90 l8 8"/>
+    </g>
 
-    <!-- Cross band rivets -->
-    <circle cx="100" cy="95" r="3" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="1.8"/>
-    <circle cx="100" cy="55" r="2" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="100" cy="145" r="2" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="100" cy="180" r="2" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <!-- Visor (hinged band) -->
+    <path d="M58 118 L162 118 L160 148 L60 148 Z" stroke="url(#helmMetal)" stroke-width="2.4"/>
+    <path d="M58 118 L162 118" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.6"/>
 
-    <!-- Brow ridge overhang, shading its own eye slits -->
-    <path d="M64 87 Q100 79 136 87" stroke="url(#helmMetal)" stroke-width="2.4"/>
-    <path d="M70 90 Q100 84 130 90" stroke="#2e1065" stroke-width="4" opacity="0.4"/>
+    <!-- Hinge pins -->
+    <circle cx="56" cy="132" r="4" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
+    <circle cx="164" cy="132" r="4" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
 
-    <!-- Eye slits -->
-    <rect x="75" y="91" width="20" height="8.5" rx="2" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
-    <rect x="105" y="91" width="20" height="8.5" rx="2" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
+    <!-- Sight slits -->
+    <path d="M72 130 L98 128" stroke="url(#helmMetal)" stroke-width="3"/>
+    <path d="M122 128 L148 130" stroke="url(#helmMetal)" stroke-width="3"/>
 
-    <!-- Ventilation grille, widening slightly with the taper -->
-    <circle cx="76" cy="132" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="90" cy="132" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="110" cy="132" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="124" cy="132" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
+    <!-- Scrollwork (visor corners) -->
+    <path d="M64 140 C 68 136 74 137 74 141 C 74 145 69 146 66 144" stroke="url(#helmMetal)" stroke-width="0.9"/>
+    <path d="M156 140 C 152 136 146 137 146 141 C 146 145 151 146 154 144" stroke="url(#helmMetal)" stroke-width="0.9"/>
 
-    <circle cx="73" cy="153" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="88" cy="153" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="112" cy="153" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <circle cx="127" cy="153" r="2.6" stroke="url(#helmMetal)" stroke-width="1.6"/>
+    <!-- Hatch under visor -->
+    <g stroke="#2e1065" stroke-width="0.7" opacity="0.5">
+      <path d="M140 138 l6 6 M146 132 l6 6 M152 138 l6 6"/>
+    </g>
 
-    <circle cx="70" cy="174" r="2.4" stroke="url(#helmMetal)" stroke-width="1.5"/>
-    <circle cx="86" cy="174" r="2.4" stroke="url(#helmMetal)" stroke-width="1.5"/>
-    <circle cx="114" cy="174" r="2.4" stroke="url(#helmMetal)" stroke-width="1.5"/>
-    <circle cx="130" cy="174" r="2.4" stroke="url(#helmMetal)" stroke-width="1.5"/>
+    <!-- Bevor / chin piece -->
+    <path d="M60 148
+             C 58 168 60 188 70 202
+             C 82 216 98 222 110 222
+             C 122 222 138 216 150 202
+             C 160 188 162 168 160 148
+             Z" stroke="url(#helmMetal)" stroke-width="2.4"/>
 
-    <!-- Flared base / shoulder skirt rim -->
-    <path d="M52 210 C 50 220 50 226 52 230" stroke="url(#helmMetal)" stroke-width="1.6" opacity="0.7"/>
-    <path d="M148 210 C 150 220 150 226 148 230" stroke="url(#helmMetal)" stroke-width="1.6" opacity="0.7"/>
-    <path d="M60 224 Q 100 238 140 224" stroke="url(#helmMetal)" stroke-width="1.4" opacity="0.55"/>
+    <path d="M110 150 L110 218" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Breath grille -->
+    <circle cx="86" cy="168" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="98" cy="172" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="122" cy="172" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="134" cy="168" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="90" cy="186" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="105" cy="190" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="115" cy="190" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="130" cy="186" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
+
+    <!-- Scrollwork (bevor corners) -->
+    <path d="M76 200 C 80 196 86 197 86 201 C 86 205 81 206 78 204" stroke="url(#helmMetal)" stroke-width="0.9"/>
+    <path d="M144 200 C 140 196 134 197 134 201 C 134 205 139 206 142 204" stroke="url(#helmMetal)" stroke-width="0.9"/>
+
+    <!-- Chin hatching (shadow side) -->
+    <g stroke="#2e1065" stroke-width="0.7" opacity="0.55">
+      <path d="M132 160 l6 6 M136 170 l6 6 M138 182 l6 6 M136 194 l6 6"/>
+      <path d="M138 156 l6 6 M142 166 l6 6 M144 178 l6 6 M142 190 l6 6"/>
+    </g>
+
+    <!-- Gorget (articulated neck lames) -->
+    <path d="M74 220 C 68 230 62 238 54 244 Q 110 260 166 244 C 158 238 152 230 146 220 Z"
+          stroke="url(#helmMetal)" stroke-width="2.2"/>
+    <path d="M62 236 Q 110 250 158 236" stroke="url(#helmMetal)" stroke-width="1.4" opacity="0.6"/>
+
+    <path d="M56 244 C 50 252 46 258 42 262 Q 110 276 178 262 C 174 258 170 252 164 244 Z"
+          stroke="url(#helmMetal)" stroke-width="2.2"/>
+
+    <!-- Scrollwork (gorget) -->
+    <path d="M84 232 C 88 228 94 229 94 233 C 94 237 89 238 86 236" stroke="url(#helmMetal)" stroke-width="0.85"/>
+    <path d="M136 232 C 132 228 126 229 126 233 C 126 237 131 238 134 236" stroke="url(#helmMetal)" stroke-width="0.85"/>
+
+    <!-- Gorget rivets -->
+    <circle cx="60" cy="232" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="160" cy="232" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="50" cy="254" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="170" cy="254" r="1.8" fill="url(#helmMetal)"/>
+
+    <!-- Gorget hatching -->
+    <g stroke="#2e1065" stroke-width="0.7" opacity="0.5">
+      <path d="M144 248 l6 5 M150 254 l6 5 M156 260 l6 5"/>
+    </g>
   </svg>
 </div>
 
