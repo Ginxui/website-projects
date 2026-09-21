@@ -122,6 +122,56 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
   backdrop.renderOrder = -1;
   scene.add(backdrop);
 
+  // ---------- The house helm, painted into the storm as a soft-edged presence ----------
+  var helmGroup = new THREE.Group();
+  helmGroup.position.set(2.35, -0.25, -1.2);
+  helmGroup.rotation.y = -0.22;
+  scene.add(helmGroup);
+
+  var helmUniforms = {
+    uMap: { value: null },
+    uReveal: { value: 0 }
+  };
+
+  var helmMaterial = new THREE.ShaderMaterial({
+    uniforms: helmUniforms,
+    transparent: true,
+    depthWrite: false,
+    vertexShader: [
+      "varying vec2 vUv;",
+      "void main() {",
+      "  vUv = uv;",
+      "  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);",
+      "}"
+    ].join("\n"),
+    fragmentShader: [
+      "precision highp float;",
+      "varying vec2 vUv;",
+      "uniform sampler2D uMap;",
+      "uniform float uReveal;",
+      "",
+      "void main() {",
+      "  vec4 tex = texture2D(uMap, vUv);",
+      "  vec2 d = vUv - vec2(0.52, 0.5);",
+      "  d.x *= 1.05;",
+      "  float dist = length(d);",
+      "  float mask = smoothstep(0.66, 0.1, dist);",
+      "  vec3 col = tex.rgb * vec3(0.82, 0.78, 0.98);",
+      "  float lift = smoothstep(0.6, 1.0, max(tex.r, max(tex.g, tex.b)));",
+      "  col += lift * vec3(0.18, 0.1, 0.3);",
+      "  gl_FragColor = vec4(col, mask * 0.82 * uReveal);",
+      "}"
+    ].join("\n")
+  });
+
+  var helmMesh = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 7.4), helmMaterial);
+  helmGroup.add(helmMesh);
+
+  new THREE.TextureLoader().load("assets/images/dondarrion-helm-hero.webp", function (tex) {
+    tex.colorSpace = THREE.SRGBColorSpace;
+    helmUniforms.uMap.value = tex;
+  });
+
   // ---------- Procedural 3D lightning bolts ----------
   var boltGroup = new THREE.Group();
   scene.add(boltGroup);
@@ -226,6 +276,14 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
     camera.position.x += (pointerX * 0.6 - camera.position.x) * 0.02;
     camera.position.y += (-pointerY * 0.4 - camera.position.y) * 0.02;
     camera.lookAt(0, 0, 0);
+
+    if (helmUniforms.uMap.value && helmUniforms.uReveal.value < 1) {
+      helmUniforms.uReveal.value = Math.min(1, helmUniforms.uReveal.value + 0.012);
+    }
+    var targetRotY = -0.22 + pointerX * 0.1;
+    var targetRotX = pointerY * 0.06;
+    helmGroup.rotation.y += (targetRotY - helmGroup.rotation.y) * 0.03;
+    helmGroup.rotation.x += (targetRotX - helmGroup.rotation.x) * 0.03;
 
     var now = performance.now();
     for (var i = activeBolts.length - 1; i >= 0; i--) {

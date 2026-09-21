@@ -74,6 +74,16 @@ img, svg { display: block; max-width: 100%; }
   transition: opacity 90ms ease-out;
 }
 
+.atmosphere-drift {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.65;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(circle at 50% var(--drift-y, 25%), var(--drift-color, rgba(124, 58, 237, 0.3)), transparent 62%);
+}
+
 .grain-overlay {
   position: fixed;
   inset: 0;
@@ -631,6 +641,8 @@ main { position: relative; z-index: 2; }
 }
 
 .rank-tier-elegant {
+  position: relative;
+  z-index: 0;
   display: grid;
   grid-template-columns: 4rem 1fr;
   gap: 1.75rem;
@@ -638,6 +650,29 @@ main { position: relative; z-index: 2; }
   padding: 2.25rem 0;
   text-align: left;
 }
+
+.tier-glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 640px;
+  height: 640px;
+  max-width: 90vw;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-cinematic);
+  pointer-events: none;
+}
+
+.rank-tier-elegant.is-in-scene .tier-glow { opacity: 1; }
+
+.tier-i .tier-glow { background: radial-gradient(circle, rgba(245, 243, 255, 0.4), transparent 70%); }
+.tier-ii .tier-glow { background: radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent 70%); }
+.tier-iii .tier-glow { background: radial-gradient(circle, rgba(251, 146, 60, 0.3), transparent 70%); }
+.tier-iv .tier-glow { background: radial-gradient(circle, rgba(91, 33, 182, 0.25), transparent 70%); }
 
 .tier-numeral {
   font-family: var(--font-serif-premium);
@@ -1005,7 +1040,9 @@ main { position: relative; z-index: 2; }
   #hero-webgl { display: none; }
   #flash-overlay { display: none; }
   .grain-overlay { display: none; }
+  .atmosphere-drift { display: none; }
   .helm-glow, .helm-glow-warm, .scroll-cue::after { animation: none; }
+  .tier-glow { transition: none !important; opacity: 0 !important; }
 
   .brand,
   .nav-links li,

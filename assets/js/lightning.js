@@ -131,6 +131,53 @@
     });
   }
 
+  // Per-scene spotlight: each [data-scene] block (e.g. a hierarchy rank tier)
+  // gets its own colored glow that activates as it crosses viewport center.
+  var sceneEls = Array.prototype.slice.call(document.querySelectorAll("[data-scene]"));
+  if (sceneEls.length && !reduceMotion && "IntersectionObserver" in window) {
+    var sceneObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          entry.target.classList.toggle("is-in-scene", entry.isIntersecting);
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+    sceneEls.forEach(function (el) { sceneObserver.observe(el); });
+  }
+
+  // Sitewide atmosphere drift: a fixed glow that slowly shifts from purple to
+  // ember orange as the reader moves through the page, tying every section
+  // into one continuous light source rather than isolated backgrounds.
+  var atmosphere = document.querySelector(".atmosphere-drift");
+  if (atmosphere && !reduceMotion) {
+    var atmosphereTicking = false;
+    var updateAtmosphere = function () {
+      var doc = document.documentElement;
+      var maxScroll = doc.scrollHeight - window.innerHeight;
+      var progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+      var purple = [124, 58, 237];
+      var orange = [251, 146, 60];
+      var mixed = [0, 1, 2].map(function (i) {
+        return Math.round(purple[i] + (orange[i] - purple[i]) * progress);
+      });
+      var alpha = 0.32 - progress * 0.12;
+      atmosphere.style.setProperty(
+        "--drift-color",
+        "rgba(" + mixed[0] + ", " + mixed[1] + ", " + mixed[2] + ", " + alpha.toFixed(3) + ")"
+      );
+      atmosphere.style.setProperty("--drift-y", (18 + progress * 55) + "%");
+      atmosphereTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!atmosphereTicking) {
+        requestAnimationFrame(updateAtmosphere);
+        atmosphereTicking = true;
+      }
+    }, { passive: true });
+    updateAtmosphere();
+  }
+
   // Scroll parallax for [data-parallax] elements (transform-only, rAF-throttled).
   // Also drives a --proximity custom property (0..1, peaks when centered) for
   // elements opted into data-parallax-scale / data-parallax-glow.
