@@ -172,6 +172,55 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
     helmUniforms.uMap.value = tex;
   });
 
+  // ---------- The house sword, mirrored on the left for compositional balance ----------
+  var swordGroup = new THREE.Group();
+  swordGroup.position.set(-2.7, -0.1, -1.4);
+  swordGroup.rotation.set(0, 0.16, 0.055);
+  scene.add(swordGroup);
+
+  var swordUniforms = {
+    uMap: { value: null },
+    uReveal: { value: 0 }
+  };
+
+  var swordMaterial = new THREE.ShaderMaterial({
+    uniforms: swordUniforms,
+    transparent: true,
+    depthWrite: false,
+    vertexShader: [
+      "varying vec2 vUv;",
+      "void main() {",
+      "  vUv = uv;",
+      "  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);",
+      "}"
+    ].join("\n"),
+    fragmentShader: [
+      "precision highp float;",
+      "varying vec2 vUv;",
+      "uniform sampler2D uMap;",
+      "uniform float uReveal;",
+      "",
+      "void main() {",
+      "  vec4 tex = texture2D(uMap, vUv);",
+      "  vec3 col = tex.rgb * vec3(0.85, 0.85, 0.98);",
+      "  float lift = smoothstep(0.55, 1.0, max(tex.r, max(tex.g, tex.b)));",
+      "  col += lift * vec3(0.16, 0.09, 0.3);",
+      "  float fade = smoothstep(0.0, 0.14, vUv.y) * smoothstep(1.0, 0.86, vUv.y);",
+      "  gl_FragColor = vec4(col, tex.a * 0.85 * fade * uReveal);",
+      "}"
+    ].join("\n")
+  });
+
+  var swordAspect = 292 / 1011;
+  var swordHeight = 9.2;
+  var swordMesh = new THREE.Mesh(new THREE.PlaneGeometry(swordHeight * swordAspect, swordHeight), swordMaterial);
+  swordGroup.add(swordMesh);
+
+  new THREE.TextureLoader().load("assets/images/dondarrion-sword.webp", function (tex) {
+    tex.colorSpace = THREE.SRGBColorSpace;
+    swordUniforms.uMap.value = tex;
+  });
+
   // ---------- Procedural 3D lightning bolts ----------
   var boltGroup = new THREE.Group();
   scene.add(boltGroup);
@@ -284,6 +333,14 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
     var targetRotX = pointerY * 0.06;
     helmGroup.rotation.y += (targetRotY - helmGroup.rotation.y) * 0.03;
     helmGroup.rotation.x += (targetRotX - helmGroup.rotation.x) * 0.03;
+
+    if (swordUniforms.uMap.value && swordUniforms.uReveal.value < 1) {
+      swordUniforms.uReveal.value = Math.min(1, swordUniforms.uReveal.value + 0.012);
+    }
+    var swordTargetRotY = 0.16 - pointerX * 0.08;
+    var swordTargetZ = 0.055 + pointerX * 0.02;
+    swordGroup.rotation.y += (swordTargetRotY - swordGroup.rotation.y) * 0.03;
+    swordGroup.rotation.z += (swordTargetZ - swordGroup.rotation.z) * 0.03;
 
     var now = performance.now();
     for (var i = activeBolts.length - 1; i >= 0; i--) {
