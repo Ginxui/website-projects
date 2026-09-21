@@ -122,19 +122,19 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
   backdrop.renderOrder = -1;
   scene.add(backdrop);
 
-  // ---------- The house helm, painted into the storm as a soft-edged presence ----------
-  var helmGroup = new THREE.Group();
-  helmGroup.position.set(2.35, -0.25, -1.2);
-  helmGroup.rotation.y = -0.22;
-  scene.add(helmGroup);
+  // ---------- The house sword, painted into the storm as a soft-edged presence ----------
+  var swordGroup = new THREE.Group();
+  swordGroup.position.set(2.35, -0.25, -1.2);
+  swordGroup.rotation.set(0, -0.22, 0.04);
+  scene.add(swordGroup);
 
-  var helmUniforms = {
+  var swordUniforms = {
     uMap: { value: null },
     uReveal: { value: 0 }
   };
 
-  var helmMaterial = new THREE.ShaderMaterial({
-    uniforms: helmUniforms,
+  var swordMaterial = new THREE.ShaderMaterial({
+    uniforms: swordUniforms,
     transparent: true,
     depthWrite: false,
     vertexShader: [
@@ -152,24 +152,23 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
       "",
       "void main() {",
       "  vec4 tex = texture2D(uMap, vUv);",
-      "  vec2 d = vUv - vec2(0.52, 0.5);",
-      "  d.x *= 1.05;",
-      "  float dist = length(d);",
-      "  float mask = smoothstep(0.66, 0.1, dist);",
-      "  vec3 col = tex.rgb * vec3(0.82, 0.78, 0.98);",
-      "  float lift = smoothstep(0.6, 1.0, max(tex.r, max(tex.g, tex.b)));",
-      "  col += lift * vec3(0.18, 0.1, 0.3);",
-      "  gl_FragColor = vec4(col, mask * 0.82 * uReveal);",
+      "  vec3 col = tex.rgb * vec3(0.85, 0.85, 0.98);",
+      "  float lift = smoothstep(0.55, 1.0, max(tex.r, max(tex.g, tex.b)));",
+      "  col += lift * vec3(0.16, 0.09, 0.3);",
+      "  float fade = smoothstep(0.0, 0.14, vUv.y) * smoothstep(1.0, 0.86, vUv.y);",
+      "  gl_FragColor = vec4(col, tex.a * 0.88 * fade * uReveal);",
       "}"
     ].join("\n")
   });
 
-  var helmMesh = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 7.4), helmMaterial);
-  helmGroup.add(helmMesh);
+  var swordAspect = 292 / 1011;
+  var swordHeight = 9.6;
+  var swordMesh = new THREE.Mesh(new THREE.PlaneGeometry(swordHeight * swordAspect, swordHeight), swordMaterial);
+  swordGroup.add(swordMesh);
 
-  new THREE.TextureLoader().load("assets/images/dondarrion-helm-hero.webp", function (tex) {
+  new THREE.TextureLoader().load("assets/images/dondarrion-sword.webp", function (tex) {
     tex.colorSpace = THREE.SRGBColorSpace;
-    helmUniforms.uMap.value = tex;
+    swordUniforms.uMap.value = tex;
   });
 
   // ---------- Procedural 3D lightning bolts ----------
@@ -277,13 +276,13 @@ import { UnrealBloomPass } from "./vendor/three/postprocessing/UnrealBloomPass.j
     camera.position.y += (-pointerY * 0.4 - camera.position.y) * 0.02;
     camera.lookAt(0, 0, 0);
 
-    if (helmUniforms.uMap.value && helmUniforms.uReveal.value < 1) {
-      helmUniforms.uReveal.value = Math.min(1, helmUniforms.uReveal.value + 0.012);
+    if (swordUniforms.uMap.value && swordUniforms.uReveal.value < 1) {
+      swordUniforms.uReveal.value = Math.min(1, swordUniforms.uReveal.value + 0.012);
     }
     var targetRotY = -0.22 + pointerX * 0.1;
     var targetRotX = pointerY * 0.06;
-    helmGroup.rotation.y += (targetRotY - helmGroup.rotation.y) * 0.03;
-    helmGroup.rotation.x += (targetRotX - helmGroup.rotation.x) * 0.03;
+    swordGroup.rotation.y += (targetRotY - swordGroup.rotation.y) * 0.03;
+    swordGroup.rotation.x += (targetRotX - swordGroup.rotation.x) * 0.03;
 
     var now = performance.now();
     for (var i = activeBolts.length - 1; i >= 0; i--) {
