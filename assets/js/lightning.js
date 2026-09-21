@@ -19,8 +19,83 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Scroll-driven reveal choreography for [data-reveal] and [data-reveal-mask] elements
-  var revealEls = document.querySelectorAll("[data-reveal], [data-reveal-mask]");
+  // Line/word text-curtain splitting for [data-reveal-split] elements (font-safe, resize-safe)
+  function buildSplitLine(text) {
+    var line = document.createElement("span");
+    line.className = "split-line";
+    var inner = document.createElement("span");
+    inner.className = "split-inner";
+    inner.textContent = text;
+    line.appendChild(inner);
+    return line;
+  }
+
+  function splitWords(el) {
+    var text = el.dataset.originalText || el.textContent;
+    el.dataset.originalText = text;
+    var words = text.split(/\s+/).filter(Boolean);
+    el.textContent = "";
+    words.forEach(function (w, i) {
+      var word = buildSplitLine(w);
+      word.className = "split-word";
+      el.appendChild(word);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
+    });
+  }
+
+  function splitLines(el) {
+    var text = el.dataset.originalText || el.textContent;
+    el.dataset.originalText = text;
+    var words = text.split(/\s+/).filter(Boolean);
+    el.textContent = "";
+    var temp = words.map(function (w) {
+      var span = document.createElement("span");
+      span.textContent = w + " ";
+      el.appendChild(span);
+      return span;
+    });
+    var lines = [];
+    var lastTop = null;
+    temp.forEach(function (span) {
+      var top = span.offsetTop;
+      if (lastTop === null || Math.abs(top - lastTop) > 4) {
+        lines.push([]);
+        lastTop = top;
+      }
+      lines[lines.length - 1].push(span.textContent);
+    });
+    el.textContent = "";
+    lines.forEach(function (lineWords) {
+      el.appendChild(buildSplitLine(lineWords.join("").trim()));
+    });
+  }
+
+  function applyStagger(el, msPerItem) {
+    var items = el.querySelectorAll(".split-inner");
+    items.forEach(function (item, i) {
+      item.style.transitionDelay = Math.min(i, 8) * msPerItem + "ms";
+    });
+  }
+
+  var splitWordEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal-split="words"]'));
+  var splitLineEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal-split="lines"]'));
+
+  function runSplits() {
+    splitWordEls.forEach(function (el) { splitWords(el); applyStagger(el, 45); });
+    splitLineEls.forEach(function (el) { splitLines(el); applyStagger(el, 110); });
+  }
+
+  if (splitWordEls.length || splitLineEls.length) {
+    runSplits();
+    var splitResizeTimer = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(splitResizeTimer);
+      splitResizeTimer = setTimeout(runSplits, 200);
+    });
+  }
+
+  // Scroll-driven reveal choreography for [data-reveal], [data-reveal-mask] and [data-reveal-split] elements
+  var revealEls = document.querySelectorAll("[data-reveal], [data-reveal-mask], [data-reveal-split]");
   if (revealEls.length) {
     if (reduceMotion || !("IntersectionObserver" in window)) {
       revealEls.forEach(function (el) { el.classList.add("reveal-in"); });
@@ -56,7 +131,9 @@
     });
   }
 
-  // Scroll parallax for [data-parallax] elements (transform-only, rAF-throttled)
+  // Scroll parallax for [data-parallax] elements (transform-only, rAF-throttled).
+  // Also drives a --proximity custom property (0..1, peaks when centered) for
+  // elements opted into data-parallax-scale / data-parallax-glow.
   var parallaxEls = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
   if (parallaxEls.length && !reduceMotion) {
     var parallaxTicking = false;
@@ -66,8 +143,18 @@
         var factor = parseFloat(el.getAttribute("data-parallax")) || 0.1;
         var rect = el.getBoundingClientRect();
         var center = rect.top + rect.height / 2;
-        var offset = (center - vh / 2) * factor;
-        el.style.transform = "translateY(" + (-offset).toFixed(2) + "px)";
+        var delta = center - vh / 2;
+        var offset = delta * factor;
+        var proximity = Math.max(0, 1 - Math.abs(delta) / (vh * 0.8));
+        var transform = "translateY(" + (-offset).toFixed(2) + "px)";
+        if (el.hasAttribute("data-parallax-scale")) {
+          var scale = 0.97 + proximity * 0.04;
+          transform += " scale(" + scale.toFixed(4) + ")";
+        }
+        el.style.transform = transform;
+        if (el.hasAttribute("data-parallax-glow")) {
+          el.style.setProperty("--proximity", proximity.toFixed(3));
+        }
       });
       parallaxTicking = false;
     };
@@ -81,7 +168,7 @@
   }
 
   // Pointer tilt for the cinematic helm frame
-  var tiltOuter = document.querySelector(".hierarchy-visual .bezel-outer.is-square");
+  var tiltOuter = document.querySelector(".hierarchy-visual-sticky .bezel-outer.is-square");
   var tiltInner = tiltOuter && tiltOuter.querySelector(".bezel-inner");
   if (tiltOuter && tiltInner && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     var maxTilt = 7;

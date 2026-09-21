@@ -32,6 +32,7 @@
 <canvas id="storm-canvas" aria-hidden="true"></canvas>
 <div id="flash-overlay" aria-hidden="true"></div>
 <div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
 
 <header class="site-header">
   <nav class="nav">
@@ -56,7 +57,7 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="sigil-wrap" data-parallax="0.06">
+      <div class="sigil-wrap" data-parallax="0.06" data-parallax-scale>
         <svg class="sigil sigil-hero" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion: a purple field split by a forked black lightning bolt">
           <defs>
             <radialGradient id="fieldGrad" cx="50%" cy="42%" r="70%">
@@ -86,21 +87,84 @@
 
   <section id="hierarchy-structure" class="section-cinematic hierarchy-cinematic">
 
-    <div class="hierarchy-editorial">
-      <div class="hierarchy-copy" data-reveal>
-        <span class="eyebrow-pill">Chain of Command</span>
-        <h2 class="hierarchy-heading reveal-mask" data-reveal-mask>
-          <span class="reveal-mask-inner">Hierarchy<br>Structure</span>
-        </h2>
-        <p class="hierarchy-lede">
-          From the Lord of Blackhaven down to the newest levy, every rank in House Dondarrion
-          answers to the one above it. A line of command forged the way the house was founded &mdash;
-          swift, and sure.
-        </p>
+    <div class="hierarchy-scene">
+      <div class="hierarchy-narrative">
+        <div class="hierarchy-copy">
+          <span class="eyebrow-pill" data-reveal>Chain of Command</span>
+          <h2 class="hierarchy-heading reveal-mask" data-reveal-mask>
+            <span class="reveal-mask-inner">Hierarchy<br>Structure</span>
+          </h2>
+          <p class="hierarchy-lede" data-reveal-split="lines">
+            From the Lord of Blackhaven down to the newest levy, every rank in House Dondarrion
+            answers to the one above it. A line of command forged the way the house was founded &mdash;
+            swift, and sure.
+          </p>
+        </div>
+
+        <div class="rank-ladder-elegant">
+
+          <div class="rank-tier-elegant" data-reveal>
+            <span class="tier-numeral">I</span>
+            <div class="tier-body">
+              <span class="tier-label">Lineage</span>
+              <div class="tier-names">
+                <span class="rank-item-el is-primary">Lord Rykard</span>
+                <span class="rank-item-el">Heir to Blackhaven</span>
+                <span class="rank-item-el">Dondarrion Lineage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+          <div class="rank-tier-elegant" data-reveal>
+            <span class="tier-numeral">II</span>
+            <div class="tier-body">
+              <span class="tier-label">Command</span>
+              <div class="tier-names">
+                <span class="rank-item-el">Lord Marshal of Blackhaven</span>
+                <span class="rank-item-el">Marshal</span>
+                <span class="rank-item-el">Blackhaven Commander</span>
+                <span class="rank-item-el">Commandant</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+          <div class="rank-tier-elegant" data-reveal>
+            <span class="tier-numeral">III</span>
+            <div class="tier-body">
+              <span class="tier-label">Sworn Ranks</span>
+              <div class="tier-names">
+                <span class="rank-item-el">Knight</span>
+                <span class="rank-item-el">Guardsman</span>
+                <span class="rank-item-el">Squire</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+          <div class="rank-tier-elegant" data-reveal>
+            <span class="tier-numeral">IV</span>
+            <div class="tier-body">
+              <span class="tier-label">The Host</span>
+              <div class="tier-names">
+                <span class="rank-item-el">Master-at-Arms</span>
+                <span class="rank-item-el">Serjeant</span>
+                <span class="rank-item-el">Man-at-Arms</span>
+                <span class="rank-item-el">Swordsman</span>
+                <span class="rank-item-el">Levy</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="hierarchy-visual">
-        <div class="bezel-outer is-square" data-parallax="0.1">
+      <div class="hierarchy-visual-sticky">
+        <div class="bezel-outer is-square" data-parallax="0.1" data-parallax-scale data-parallax-glow>
           <div class="bezel-inner">
             <img
               src="assets/images/dondarrion-helm-hero.webp"
@@ -114,67 +178,6 @@
         </div>
       </div>
     </div>
-
-    <div class="rank-ladder-elegant">
-
-      <div class="rank-tier-elegant" data-reveal>
-        <span class="tier-numeral">I</span>
-        <div class="tier-body">
-          <span class="tier-label">Lineage</span>
-          <div class="tier-names">
-            <span class="rank-item-el is-primary">Lord Rykard</span>
-            <span class="rank-item-el">Heir to Blackhaven</span>
-            <span class="rank-item-el">Dondarrion Lineage</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-
-      <div class="rank-tier-elegant" data-reveal>
-        <span class="tier-numeral">II</span>
-        <div class="tier-body">
-          <span class="tier-label">Command</span>
-          <div class="tier-names">
-            <span class="rank-item-el">Lord Marshal of Blackhaven</span>
-            <span class="rank-item-el">Marshal</span>
-            <span class="rank-item-el">Blackhaven Commander</span>
-            <span class="rank-item-el">Commandant</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-
-      <div class="rank-tier-elegant" data-reveal>
-        <span class="tier-numeral">III</span>
-        <div class="tier-body">
-          <span class="tier-label">Sworn Ranks</span>
-          <div class="tier-names">
-            <span class="rank-item-el">Knight</span>
-            <span class="rank-item-el">Guardsman</span>
-            <span class="rank-item-el">Squire</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-
-      <div class="rank-tier-elegant" data-reveal>
-        <span class="tier-numeral">IV</span>
-        <div class="tier-body">
-          <span class="tier-label">The Host</span>
-          <div class="tier-names">
-            <span class="rank-item-el">Master-at-Arms</span>
-            <span class="rank-item-el">Serjeant</span>
-            <span class="rank-item-el">Man-at-Arms</span>
-            <span class="rank-item-el">Swordsman</span>
-            <span class="rank-item-el">Levy</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </section>
 
   <section id="house-overview" class="section-cinematic is-alt">
@@ -183,7 +186,7 @@
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">House Overview</span>
       </h2>
-      <p class="section-lede" data-reveal>A short standing record of the house as it exists today.</p>
+      <p class="section-lede" data-reveal-split="lines">A short standing record of the house as it exists today.</p>
     </div>
 
     <div class="stat-strip" data-reveal>
@@ -215,7 +218,7 @@
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">Promotion Guide</span>
       </h2>
-      <p class="section-lede" data-reveal>Eight ranks stand between a new levy and the Lord Marshal of Blackhaven.</p>
+      <p class="section-lede" data-reveal-split="lines">Eight ranks stand between a new levy and the Lord Marshal of Blackhaven.</p>
     </div>
 
     <div class="promo-ladder">
@@ -311,7 +314,7 @@
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">Family Tree</span>
       </h2>
-      <p class="section-lede" data-reveal>The line begins with its Lord. The rest will be written in time.</p>
+      <p class="section-lede" data-reveal-split="lines">The line begins with its Lord. The rest will be written in time.</p>
     </div>
 
     <div class="bezel-outer is-card portrait-plate" data-reveal>
