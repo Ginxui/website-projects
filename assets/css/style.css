@@ -512,8 +512,7 @@ main { position: relative; z-index: 2; }
 .tier-names {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 1.5rem;
-  row-gap: 0.5rem;
+  row-gap: 0.6rem;
 }
 
 .rank-item-el {
@@ -521,6 +520,15 @@ main { position: relative; z-index: 2; }
   font-size: 1.3rem;
   color: var(--text-main);
   letter-spacing: 0.01em;
+}
+
+.rank-item-el:not(:last-child)::after {
+  content: "\2014";
+  display: inline-block;
+  margin: 0 0.9rem;
+  color: var(--purple-400);
+  opacity: 0.55;
+  font-weight: 400;
 }
 
 .rank-item-el.is-primary {
