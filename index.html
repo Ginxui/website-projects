@@ -24,151 +24,14 @@
 <meta name="theme-color" content="#7c3aed">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <canvas id="storm-canvas" aria-hidden="true"></canvas>
 <div id="flash-overlay" aria-hidden="true"></div>
-
-<div id="knightHelm" class="knight-helm" aria-hidden="true">
-  <svg viewBox="-20 -160 320 500" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
-    <defs>
-      <linearGradient id="helmMetal" x1="15%" y1="0%" x2="90%" y2="100%">
-        <stop offset="0%" stop-color="#fbf9ff"/>
-        <stop offset="40%" stop-color="#c4b5fd"/>
-        <stop offset="100%" stop-color="#3b0764"/>
-      </linearGradient>
-    </defs>
-
-    <!-- Plume: sweeps up-right, curls into a poof -->
-    <g stroke="url(#helmMetal)">
-      <path d="M140 12 C 150 -40 190 -78 245 -86 C 210 -80 185 -60 170 -30" stroke-width="1.6" opacity="0.9"/>
-      <path d="M138 14 C 152 -30 188 -64 236 -74" stroke-width="1.4" opacity="0.85"/>
-      <path d="M136 17 C 150 -20 180 -48 220 -58" stroke-width="1.25" opacity="0.8"/>
-      <path d="M134 21 C 146 -8 170 -30 202 -38" stroke-width="1.1" opacity="0.75"/>
-      <path d="M132 25 C 142 4 160 -14 184 -20" stroke-width="1" opacity="0.7"/>
-      <!-- poof cluster: overlapping rounded lobes -->
-      <path d="M172 -66 C 168 -84 180 -100 198 -98 C 212 -96 220 -82 216 -66 C 212 -52 196 -46 182 -52 C 174 -56 170 -60 172 -66 Z" stroke-width="1.3" opacity="0.85"/>
-      <path d="M198 -84 C 196 -102 210 -118 230 -114 C 246 -110 252 -94 244 -80 C 238 -68 222 -64 208 -70 C 200 -74 196 -78 198 -84 Z" stroke-width="1.3" opacity="0.85"/>
-      <path d="M220 -66 C 220 -84 236 -98 254 -92 C 268 -87 272 -72 262 -60 C 254 -50 240 -48 228 -54 C 222 -58 218 -60 220 -66 Z" stroke-width="1.25" opacity="0.82"/>
-      <path d="M212 -40 C 214 -58 232 -70 248 -62 C 260 -56 262 -42 252 -32 C 244 -24 230 -24 220 -30 C 214 -34 210 -36 212 -40 Z" stroke-width="1.2" opacity="0.78"/>
-      <path d="M192 -24 C 196 -40 212 -50 226 -42 C 236 -36 238 -24 230 -16 C 222 -8 210 -8 202 -14 C 196 -18 190 -20 192 -24 Z" stroke-width="1.15" opacity="0.75"/>
-      <path d="M178 -8 C 184 -22 198 -30 210 -22 C 218 -16 220 -6 212 2 C 206 8 194 8 188 2 C 182 -2 176 -4 178 -8 Z" stroke-width="1.1" opacity="0.7"/>
-      <!-- fine barb lines through the poof for feather texture -->
-      <g stroke-width="0.6" opacity="0.5">
-        <path d="M180 -80 C 190 -88 202 -92 212 -90"/>
-        <path d="M196 -60 C 208 -70 222 -74 234 -70"/>
-        <path d="M210 -38 C 220 -46 232 -48 242 -44"/>
-        <path d="M196 -18 C 204 -26 214 -28 222 -24"/>
-      </g>
-    </g>
-
-    <!-- Skull dome, turned 3/4 -->
-    <path d="M140 10
-             C 108 10 82 30 74 64
-             C 70 84 72 100 79 112
-             L 192 118
-             C 206 110 213 94 210 70
-             C 206 34 174 10 140 10 Z"
-          stroke="url(#helmMetal)" stroke-width="2.6"/>
-
-    <!-- Comb ridge -->
-    <path d="M138 10 C 134 40 132 78 134 114" stroke="url(#helmMetal)" stroke-width="2" opacity="0.85"/>
-    <path d="M126 18 Q138 8 150 18" stroke="url(#helmMetal)" stroke-width="1.6"/>
-
-    <!-- Skull rivets + filigree -->
-    <circle cx="188" cy="52" r="2" fill="url(#helmMetal)"/>
-    <circle cx="196" cy="88" r="1.8" fill="url(#helmMetal)"/>
-    <path d="M100 36 C 104 31 111 31 113 36 C 115 41 111 45 106 44" stroke="url(#helmMetal)" stroke-width="1"/>
-    <path d="M160 30 C 164 25 171 26 172 31 C 173 36 168 39 163 38" stroke="url(#helmMetal)" stroke-width="1"/>
-    <path d="M170 54 C 175 49 183 49 185 55 C 187 61 182 65 176 64" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
-    <path d="M178 80 C 183 76 190 77 191 82" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-    <path d="M92 60 C 96 55 103 56 104 61" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-    <path d="M86 86 C 91 82 97 83 98 88" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-
-    <!-- Cross-hatch: shadow side (far/right, turning away) -->
-    <g stroke="#2e1065" stroke-width="0.75" opacity="0.6">
-      <path d="M182 40 l8 8 M186 52 l8 8 M188 64 l8 8 M186 76 l8 8 M182 88 l8 8"/>
-      <path d="M190 36 l7 7 M194 48 l7 7 M196 60 l7 7 M194 72 l7 7 M190 84 l7 7"/>
-    </g>
-
-    <!-- Cheek boss (the big shiny stud/rivet) -->
-    <circle cx="118" cy="140" r="9" stroke="url(#helmMetal)" stroke-width="2.2"/>
-    <circle cx="118" cy="140" r="4" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.8"/>
-    <path d="M118 133 L118 147 M111 140 L125 140" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.6"/>
-
-    <!-- Visor / beak, protrudes down-left, contained under the near side of the dome -->
-    <path d="M79 112
-             C 60 118 44 130 36 150
-             C 29 168 30 188 42 202
-             C 50 211 61 214 72 210
-             C 92 203 108 188 114 168
-             C 118 152 116 132 105 118
-             C 98 110 88 107 79 112
-             Z"
-          stroke="url(#helmMetal)" stroke-width="2.5"/>
-
-    <!-- Brow vent slits along the top of the visor -->
-    <path d="M92 120 L106 117 M112 116 L126 113 M132 112 L146 109" stroke="url(#helmMetal)" stroke-width="2"/>
-
-    <!-- Beak ridge -->
-    <path d="M75 116 C 58 128 46 144 40 164 C 36 180 38 196 48 206" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.6"/>
-
-    <!-- Breathing grille (lower beak) -->
-    <circle cx="54" cy="168" r="2.4" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="50" cy="180" r="2.2" stroke="url(#helmMetal)" stroke-width="1.3"/>
-    <circle cx="58" cy="188" r="2" stroke="url(#helmMetal)" stroke-width="1.2"/>
-    <circle cx="48" cy="192" r="1.8" stroke="url(#helmMetal)" stroke-width="1.1"/>
-    <circle cx="62" cy="198" r="1.8" stroke="url(#helmMetal)" stroke-width="1.1"/>
-
-    <!-- Scrollwork across visor -->
-    <path d="M60 130 C 65 125 73 126 74 132 C 75 138 69 141 63 139" stroke="url(#helmMetal)" stroke-width="1"/>
-    <path d="M80 148 C 85 143 93 144 94 150" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
-    <path d="M70 170 C 75 166 82 167 83 172" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-    <path d="M88 190 C 92 186 98 187 99 192" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <path d="M140 130 C 145 126 152 127 153 132 C 154 137 149 140 144 138" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
-    <path d="M160 148 C 165 144 171 145 172 150" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-
-    <!-- Hatch: underside of visor (shadow) -->
-    <g stroke="#2e1065" stroke-width="0.75" opacity="0.55">
-      <path d="M150 140 l7 7 M156 150 l7 7 M162 160 l7 7 M166 172 l6 6"/>
-      <path d="M100 150 l6 6 M96 162 l6 6 M92 174 l6 6"/>
-    </g>
-
-    <!-- Gorget, articulated, flares right/back -->
-    <path d="M70 210 C 78 220 92 226 108 226 C 132 226 158 218 178 206
-             C 190 199 198 192 202 184"
-          stroke="url(#helmMetal)" stroke-width="2.2"/>
-    <path d="M62 205 C 66 222 82 236 104 240 C 136 246 172 236 196 214
-             C 206 205 212 194 212 184"
-          stroke="url(#helmMetal)" stroke-width="2.2"/>
-    <path d="M56 212 C 58 232 76 250 102 256 C 140 264 182 252 210 226
-             C 220 216 226 204 224 192"
-          stroke="url(#helmMetal)" stroke-width="2.2"/>
-
-    <!-- Gorget rivets -->
-    <circle cx="100" cy="238" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="150" cy="234" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="190" cy="216" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="96" cy="252" r="1.6" fill="url(#helmMetal)"/>
-    <circle cx="160" cy="252" r="1.6" fill="url(#helmMetal)"/>
-    <circle cx="204" cy="220" r="1.6" fill="url(#helmMetal)"/>
-
-    <!-- Scrollwork on gorget -->
-    <path d="M100 216 C 104 212 110 213 110 218" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-    <path d="M140 210 C 144 206 150 207 150 212" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
-    <path d="M108 244 C 112 240 118 241 118 246" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <path d="M150 240 C 154 236 160 237 160 242" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-
-    <!-- Hatch on gorget shadow (right/back) -->
-    <g stroke="#2e1065" stroke-width="0.7" opacity="0.5">
-      <path d="M186 200 l6 5 M192 208 l6 5 M198 198 l5 4"/>
-      <path d="M200 218 l6 5 M206 226 l5 4"/>
-    </g>
-  </svg>
-</div>
+<div class="grain-overlay" aria-hidden="true"></div>
 
 <header class="site-header">
   <nav class="nav">
@@ -219,36 +82,93 @@
     </div>
   </section>
 
-  <section id="hierarchy-structure" class="section">
-    <h2 class="section-title">Hierarchy Structure</h2>
-    <div class="hierarchy-list">
-      <div class="rank-tier">
-        <span class="rank-item">Lord Rykard</span>
-        <span class="rank-item">Heir to Blackhaven</span>
-        <span class="rank-item">Dondarrion Lineage</span>
+  <section id="hierarchy-structure" class="section hierarchy-cinematic">
+
+    <div class="hierarchy-editorial">
+      <div class="hierarchy-copy" data-reveal>
+        <span class="eyebrow-pill">Chain of Command</span>
+        <h2 class="hierarchy-heading">Hierarchy<br>Structure</h2>
+        <p class="hierarchy-lede">
+          From the Lord of Blackhaven down to the newest levy, every rank in House Dondarrion
+          answers to the one above it. A line of command forged the way the house was founded &mdash;
+          swift, and sure.
+        </p>
       </div>
-      <div class="rank-divider" aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-      <div class="rank-tier">
-        <span class="rank-item">Lord Marshal of Blackhaven</span>
-        <span class="rank-item">Marshal</span>
-        <span class="rank-item">Blackhaven Commander</span>
-        <span class="rank-item">Commandant</span>
+
+      <div class="hierarchy-visual" data-reveal>
+        <div class="helm-bezel-outer">
+          <div class="helm-bezel-inner">
+            <img
+              src="assets/images/dondarrion-helm-hero.webp"
+              alt="Ceremonial helm of House Dondarrion: black steel worked with a purple and molten-orange lightning bolt, against a dark stormlands sky"
+              class="helm-hero-img"
+              loading="lazy"
+            >
+            <div class="helm-glow" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
-      <div class="rank-divider" aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-      <div class="rank-tier">
-        <span class="rank-item">Knight</span>
-        <span class="rank-item">Guardsman</span>
-        <span class="rank-item">Squire</span>
+    </div>
+
+    <div class="rank-ladder-elegant">
+
+      <div class="rank-tier-elegant" data-reveal>
+        <span class="tier-numeral">I</span>
+        <div class="tier-body">
+          <span class="tier-label">Lineage</span>
+          <div class="tier-names">
+            <span class="rank-item-el is-primary">Lord Rykard</span>
+            <span class="rank-item-el">Heir to Blackhaven</span>
+            <span class="rank-item-el">Dondarrion Lineage</span>
+          </div>
+        </div>
       </div>
-      <div class="rank-divider" aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
-      <div class="rank-tier">
-        <span class="rank-item">Master-at-Arms</span>
-        <span class="rank-item">Serjeant</span>
-        <span class="rank-item">Man-at-Arms</span>
-        <span class="rank-item">Swordsman</span>
-        <span class="rank-item">Levy</span>
+
+      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+      <div class="rank-tier-elegant" data-reveal>
+        <span class="tier-numeral">II</span>
+        <div class="tier-body">
+          <span class="tier-label">Command</span>
+          <div class="tier-names">
+            <span class="rank-item-el">Lord Marshal of Blackhaven</span>
+            <span class="rank-item-el">Marshal</span>
+            <span class="rank-item-el">Blackhaven Commander</span>
+            <span class="rank-item-el">Commandant</span>
+          </div>
+        </div>
       </div>
-      <div class="rank-divider" aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+      <div class="rank-tier-elegant" data-reveal>
+        <span class="tier-numeral">III</span>
+        <div class="tier-body">
+          <span class="tier-label">Sworn Ranks</span>
+          <div class="tier-names">
+            <span class="rank-item-el">Knight</span>
+            <span class="rank-item-el">Guardsman</span>
+            <span class="rank-item-el">Squire</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
+
+      <div class="rank-tier-elegant" data-reveal>
+        <span class="tier-numeral">IV</span>
+        <div class="tier-body">
+          <span class="tier-label">The Host</span>
+          <div class="tier-names">
+            <span class="rank-item-el">Master-at-Arms</span>
+            <span class="rank-item-el">Serjeant</span>
+            <span class="rank-item-el">Man-at-Arms</span>
+            <span class="rank-item-el">Swordsman</span>
+            <span class="rank-item-el">Levy</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

@@ -19,19 +19,28 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Knight helm reveal while the Hierarchy Structure section is in view
-  var knightHelm = document.getElementById("knightHelm");
-  var hierarchySection = document.getElementById("hierarchy-structure");
-  if (knightHelm && hierarchySection && "IntersectionObserver" in window) {
-    var helmObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          knightHelm.classList.toggle("visible", entry.isIntersecting);
-        });
-      },
-      { threshold: 0.2 }
-    );
-    helmObserver.observe(hierarchySection);
+  // Scroll-driven reveal choreography for [data-reveal] elements
+  var revealEls = document.querySelectorAll("[data-reveal]");
+  if (revealEls.length) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealEls.forEach(function (el) { el.classList.add("reveal-in"); });
+    } else {
+      var revealObserver = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-in");
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: "0px 0px -60px 0px" }
+      );
+      revealEls.forEach(function (el, i) {
+        el.style.transitionDelay = Math.min(i % 6, 5) * 90 + "ms";
+        revealObserver.observe(el);
+      });
+    }
   }
 
   // Sigil coin flip
