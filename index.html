@@ -65,6 +65,7 @@
 
   <section class="hero">
     <canvas id="hero-webgl" aria-hidden="true"></canvas>
+    <div class="hero-bg-glow" data-parallax="0.12" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="sigil-wrap" data-parallax="0.06" data-parallax-scale>
         <svg class="sigil sigil-hero" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion: a purple field split by a forked black lightning bolt">
@@ -88,7 +89,7 @@
         </svg>
       </div>
       <p class="eyebrow">Stormlands &middot; Seat of Blackhaven</p>
-      <h1 class="house-title">HOUSE DONDARRION</h1>
+      <h1 class="house-title"><span class="title-word">HOUSE</span> <span class="title-word">DONDARRION</span></h1>
       <p class="motto">&ldquo;Swift and Sure&rdquo;</p>
     </div>
     <span class="scroll-cue" aria-hidden="true"></span>
@@ -112,7 +113,7 @@
 
         <div class="rank-ladder-elegant">
 
-          <div class="rank-tier-elegant tier-i" data-reveal data-scene>
+          <div class="rank-tier-elegant tier-i" data-reveal data-scene data-parallax="0.015" data-parallax-glow>
             <span class="tier-glow" aria-hidden="true"></span>
             <span class="tier-numeral">I</span>
             <div class="tier-body">
@@ -127,7 +128,7 @@
 
           <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
 
-          <div class="rank-tier-elegant tier-ii" data-reveal data-scene>
+          <div class="rank-tier-elegant tier-ii" data-reveal data-scene data-parallax="0.015" data-parallax-glow>
             <span class="tier-glow" aria-hidden="true"></span>
             <span class="tier-numeral">II</span>
             <div class="tier-body">
@@ -143,7 +144,7 @@
 
           <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
 
-          <div class="rank-tier-elegant tier-iii" data-reveal data-scene>
+          <div class="rank-tier-elegant tier-iii" data-reveal data-scene data-parallax="0.015" data-parallax-glow>
             <span class="tier-glow" aria-hidden="true"></span>
             <span class="tier-numeral">III</span>
             <div class="tier-body">
@@ -158,7 +159,7 @@
 
           <div class="tier-divider" data-reveal aria-hidden="true"><span></span><i>&#9889;</i><span></span></div>
 
-          <div class="rank-tier-elegant tier-iv" data-reveal data-scene>
+          <div class="rank-tier-elegant tier-iv" data-reveal data-scene data-parallax="0.015" data-parallax-glow>
             <span class="tier-glow" aria-hidden="true"></span>
             <span class="tier-numeral">IV</span>
             <div class="tier-body">
@@ -194,7 +195,7 @@
   </section>
 
   <section id="house-overview" class="section-cinematic is-alt">
-    <div class="section-frame">
+    <div class="section-frame" data-parallax="0.04" data-parallax-scale>
       <span class="eyebrow-pill" data-reveal>Records</span>
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">House Overview</span>
@@ -202,23 +203,23 @@
       <p class="section-lede" data-reveal-split="lines">A short standing record of the house as it exists today.</p>
     </div>
 
-    <div class="stat-strip" data-reveal>
-      <div class="stat-block">
+    <div class="stat-strip">
+      <div class="stat-block" data-reveal style="--stat-i: 0">
         <span class="stat-label">Allied Factions / Houses</span>
         <span class="stat-value">N/A</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-block">
+      <div class="stat-block" data-reveal style="--stat-i: 1">
         <span class="stat-label">Enemy Factions / Houses</span>
         <span class="stat-value">N/A</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-block">
+      <div class="stat-block" data-reveal style="--stat-i: 2">
         <span class="stat-label">Officiality Status</span>
         <span class="stat-value">Unofficial</span>
       </div>
       <div class="stat-divider" aria-hidden="true"></div>
-      <div class="stat-block">
+      <div class="stat-block" data-reveal style="--stat-i: 3">
         <span class="stat-label">Territories Claimed</span>
         <span class="stat-value">N/A</span>
       </div>
@@ -226,7 +227,7 @@
   </section>
 
   <section id="promotion-guide" class="section-cinematic">
-    <div class="section-frame">
+    <div class="section-frame" data-parallax="0.04" data-parallax-scale>
       <span class="eyebrow-pill" data-reveal>The Ladder</span>
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">Promotion Guide</span>
@@ -236,31 +237,31 @@
 
     <div class="promo-ladder">
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">1</span>
+        <span class="promo-badge" style="--rank: 1">1</span>
         <h3 class="promo-rank">Levy</h3>
         <p class="promo-req">Starting rank. You've taken your oath and begun your service.</p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">2</span>
+        <span class="promo-badge" style="--rank: 2">2</span>
         <h3 class="promo-rank">Swordsman</h3>
         <p class="promo-req">Attend 2 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">3</span>
+        <span class="promo-badge" style="--rank: 3">3</span>
         <h3 class="promo-rank">Man-at-Arms</h3>
         <p class="promo-req">Attend 4 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">4</span>
+        <span class="promo-badge" style="--rank: 4">4</span>
         <h3 class="promo-rank">Serjeant</h3>
         <p class="promo-req">Attend 5 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">5</span>
+        <span class="promo-badge" style="--rank: 5">5</span>
         <h3 class="promo-rank">Master-at-Arms</h3>
         <p class="promo-req">
           Attend 8 events or deployments, logged in <code class="channel-tag">#activity-log</code>, then pass
@@ -297,24 +298,24 @@
     </div>
 
     <div class="promo-ladder promo-continuation">
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">6</span>
+        <span class="promo-badge" style="--rank: 6">6</span>
         <h3 class="promo-rank">Blackhaven Commander</h3>
         <p class="promo-req">Chosen by the Lord Marshal or higher. Holds authority over both the Knighthood and the Main Force.</p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">7</span>
+        <span class="promo-badge" style="--rank: 7">7</span>
         <h3 class="promo-rank">Marshal</h3>
         <p class="promo-req">
           Chosen by a Marshal or higher. Holds absolute authority over the Knighthood and Main Force,
           advises the Lord Marshal, and stands in as Lord Marshal during their absence.
         </p>
       </div>
-      <div class="promo-connector" aria-hidden="true"></div>
+      <div class="promo-connector" data-reveal aria-hidden="true"></div>
       <div class="promo-step" data-reveal>
-        <span class="promo-badge">8</span>
+        <span class="promo-badge" style="--rank: 8">8</span>
         <h3 class="promo-rank">Lord Marshal</h3>
         <p class="promo-req">Chosen by the Lord of House Dondarrion.</p>
       </div>
@@ -322,7 +323,7 @@
   </section>
 
   <section id="family-tree" class="section-cinematic is-alt">
-    <div class="section-frame">
+    <div class="section-frame" data-parallax="0.04" data-parallax-scale>
       <span class="eyebrow-pill" data-reveal>The Dondarrion Line</span>
       <h2 class="section-heading reveal-mask" data-reveal-mask>
         <span class="reveal-mask-inner">Family Tree</span>
@@ -330,11 +331,14 @@
       <p class="section-lede" data-reveal-split="lines">The line begins with its Lord. The rest will be written in time.</p>
     </div>
 
-    <div class="bezel-outer is-card portrait-plate" data-reveal>
-      <div class="bezel-inner portrait-plate-inner">
-        <span class="portrait-mark" aria-hidden="true">&#9889;</span>
-        <h3 class="portrait-name">Lord Rykard Dondarrion</h3>
-        <span class="portrait-title">Lord of House Dondarrion</span>
+    <div class="portrait-stage">
+      <div class="portrait-glow" aria-hidden="true"></div>
+      <div class="bezel-outer is-card portrait-plate" data-reveal>
+        <div class="bezel-inner portrait-plate-inner">
+          <span class="portrait-mark" aria-hidden="true">&#9889;</span>
+          <h3 class="portrait-name">Lord Rykard Dondarrion</h3>
+          <span class="portrait-title">Lord of House Dondarrion</span>
+        </div>
       </div>
     </div>
     <p class="placeholder-text" data-reveal>The rest of the Dondarrion line will be added soon.</p>

@@ -151,17 +151,35 @@
   // into one continuous light source rather than isolated backgrounds.
   var atmosphere = document.querySelector(".atmosphere-drift");
   if (atmosphere && !reduceMotion) {
+    // Narrative-beat color stops: each major section gets its own light,
+    // tying the atmosphere to the story rather than a flat two-color lerp.
+    var atmosphereStops = [
+      { t: 0,    rgb: [124, 58, 237] },  // hero: house purple
+      { t: 0.22, rgb: [167, 139, 250] }, // hierarchy: lightning lavender
+      { t: 0.48, rgb: [99, 102, 241] },  // house overview: cool record-keeping indigo
+      { t: 0.74, rgb: [251, 146, 60] },  // promotion guide: rising ember
+      { t: 1,    rgb: [167, 40, 90] }    // family tree: deep crimson-violet finale
+    ];
+    var lerpAtmosphereColor = function (progress) {
+      for (var i = 0; i < atmosphereStops.length - 1; i++) {
+        var a = atmosphereStops[i], b = atmosphereStops[i + 1];
+        if (progress >= a.t && progress <= b.t) {
+          var span = b.t - a.t || 1;
+          var localT = (progress - a.t) / span;
+          return [0, 1, 2].map(function (c) {
+            return Math.round(a.rgb[c] + (b.rgb[c] - a.rgb[c]) * localT);
+          });
+        }
+      }
+      return atmosphereStops[atmosphereStops.length - 1].rgb;
+    };
     var atmosphereTicking = false;
     var updateAtmosphere = function () {
       var doc = document.documentElement;
       var maxScroll = doc.scrollHeight - window.innerHeight;
       var progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
-      var purple = [124, 58, 237];
-      var orange = [251, 146, 60];
-      var mixed = [0, 1, 2].map(function (i) {
-        return Math.round(purple[i] + (orange[i] - purple[i]) * progress);
-      });
-      var alpha = 0.32 - progress * 0.12;
+      var mixed = lerpAtmosphereColor(progress);
+      var alpha = 0.32 - progress * 0.1;
       atmosphere.style.setProperty(
         "--drift-color",
         "rgba(" + mixed[0] + ", " + mixed[1] + ", " + mixed[2] + ", " + alpha.toFixed(3) + ")"
