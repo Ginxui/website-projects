@@ -1,0 +1,14 @@
+{
+  "name": "House Dondarrion",
+  "short_name": "Dondarrion",
+  "description": "House Dondarrion of Blackhaven — sigil, hierarchy, and house records.",
+  "start_url": "/website-projects/",
+  "scope": "/website-projects/",
+  "display": "standalone",
+  "background_color": "#0a0714",
+  "theme_color": "#7c3aed",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

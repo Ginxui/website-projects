@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | House Dondarrion</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .not-found {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .not-found .sigil-wrap { animation: none; width: 120px; margin-bottom: 1.75rem; filter: drop-shadow(0 0 26px rgba(124, 58, 237, 0.55)); }
+  .not-found .eyebrow { animation: none; }
+  .not-found h1 { animation: none; font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 6vw, 3.2rem); margin: 0; color: var(--lightning-white); text-shadow: 0 0 18px rgba(196, 181, 253, 0.55); }
+  .not-found p { color: var(--text-muted); font-family: var(--font-sans-clean); max-width: 480px; margin: 1.25rem 0 2rem; }
+  .not-found .btn-home {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: var(--purple-200);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    padding: 0.85rem 1.8rem;
+    text-decoration: none;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  .not-found .btn-home:hover { border-color: var(--purple-400); color: var(--lightning-white); }
+</style>
+</head>
+<body>
+
+<canvas id="storm-canvas" aria-hidden="true"></canvas>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+
+<main class="not-found">
+  <div class="sigil-wrap">
+    <svg class="sigil" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion">
+      <defs>
+        <radialGradient id="fieldGrad" cx="50%" cy="42%" r="70%">
+          <stop offset="0%" stop-color="#6d28d9"/>
+          <stop offset="55%" stop-color="#4c1d95"/>
+          <stop offset="100%" stop-color="#2e1065"/>
+        </radialGradient>
+      </defs>
+      <circle cx="100" cy="100" r="96" fill="url(#fieldGrad)" stroke="#c4b5fd" stroke-width="3"/>
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="1" opacity="0.35"/>
+      <path d="M118 22 L70 108 L96 108 L80 178 L142 90 L110 90 Z" fill="#0a0512" stroke="#f5f3ff" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <p class="eyebrow">Error 404</p>
+  <h1>This Page Was Lost to the Storm</h1>
+  <p>The path you followed leads nowhere in the records of House Dondarrion. Return to the seat of Blackhaven.</p>
+  <a class="btn-home" href="/website-projects/">Return Home</a>
+</main>
+
+<script src="assets/js/lightning.js"></script>
+</body>
+</html>

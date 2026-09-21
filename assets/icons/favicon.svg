@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="fieldGrad" cx="50%" cy="42%" r="70%">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="55%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#2e1065"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#fieldGrad)" stroke="#c4b5fd" stroke-width="3"/>
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="1" opacity="0.35"/>
+  <path d="M118 22 L70 108 L96 108 L80 178 L142 90 L110 90 Z" fill="#0a0512" stroke="#f5f3ff" stroke-width="1.5"/>
+</svg>

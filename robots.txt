@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ginxui.github.io/website-projects/sitemap.xml
