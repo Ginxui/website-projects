@@ -26,6 +26,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./assets/js/vendor/three/three.module.js"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -56,6 +63,7 @@
 <main id="top">
 
   <section class="hero">
+    <canvas id="hero-webgl" aria-hidden="true"></canvas>
     <div class="hero-inner">
       <div class="sigil-wrap" data-parallax="0.06" data-parallax-scale>
         <svg class="sigil sigil-hero" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion: a purple field split by a forked black lightning bolt">
@@ -336,5 +344,6 @@
 </footer>
 
 <script src="assets/js/lightning.js"></script>
+<script type="module" src="assets/js/hero-scene.js"></script>
 </body>
 </html>
