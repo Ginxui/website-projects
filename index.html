@@ -43,6 +43,7 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
+      <span class="nav-indicator" aria-hidden="true"></span>
       <li><a href="#hierarchy-structure">Hierarchy Structure</a></li>
       <li><a href="#house-overview">House Overview</a></li>
       <li><a href="#promotion-guide">Promotion Guide</a></li>
@@ -55,7 +56,7 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="sigil-wrap">
+      <div class="sigil-wrap" data-parallax="0.06">
         <svg class="sigil sigil-hero" viewBox="0 0 200 200" role="img" aria-label="Sigil of House Dondarrion: a purple field split by a forked black lightning bolt">
           <defs>
             <radialGradient id="fieldGrad" cx="50%" cy="42%" r="70%">
@@ -80,14 +81,17 @@
       <h1 class="house-title">HOUSE DONDARRION</h1>
       <p class="motto">&ldquo;Swift and Sure&rdquo;</p>
     </div>
+    <span class="scroll-cue" aria-hidden="true"></span>
   </section>
 
-  <section id="hierarchy-structure" class="section hierarchy-cinematic">
+  <section id="hierarchy-structure" class="section-cinematic hierarchy-cinematic">
 
     <div class="hierarchy-editorial">
       <div class="hierarchy-copy" data-reveal>
         <span class="eyebrow-pill">Chain of Command</span>
-        <h2 class="hierarchy-heading">Hierarchy<br>Structure</h2>
+        <h2 class="hierarchy-heading reveal-mask" data-reveal-mask>
+          <span class="reveal-mask-inner">Hierarchy<br>Structure</span>
+        </h2>
         <p class="hierarchy-lede">
           From the Lord of Blackhaven down to the newest levy, every rank in House Dondarrion
           answers to the one above it. A line of command forged the way the house was founded &mdash;
@@ -95,17 +99,18 @@
         </p>
       </div>
 
-      <div class="hierarchy-visual" data-reveal>
-        <div class="helm-bezel-outer">
-          <div class="helm-bezel-inner">
+      <div class="hierarchy-visual">
+        <div class="bezel-outer is-square" data-parallax="0.1">
+          <div class="bezel-inner">
             <img
               src="assets/images/dondarrion-helm-hero.webp"
               alt="Ceremonial helm of House Dondarrion: black steel worked with a purple and molten-orange lightning bolt, against a dark stormlands sky"
               class="helm-hero-img"
               loading="lazy"
             >
-            <div class="helm-glow" aria-hidden="true"></div>
           </div>
+          <div class="helm-glow" aria-hidden="true"></div>
+          <div class="helm-glow-warm" aria-hidden="true"></div>
         </div>
       </div>
     </div>
@@ -172,57 +177,73 @@
     </div>
   </section>
 
-  <section id="house-overview" class="section section-alt">
-    <h2 class="section-title">House Overview</h2>
-    <div class="fact-grid">
-      <div class="fact-card">
-        <span class="fact-label">Allied Factions / Houses</span>
-        <span class="fact-value">N/A</span>
+  <section id="house-overview" class="section-cinematic is-alt">
+    <div class="section-frame">
+      <span class="eyebrow-pill" data-reveal>Records</span>
+      <h2 class="section-heading reveal-mask" data-reveal-mask>
+        <span class="reveal-mask-inner">House Overview</span>
+      </h2>
+      <p class="section-lede" data-reveal>A short standing record of the house as it exists today.</p>
+    </div>
+
+    <div class="stat-strip" data-reveal>
+      <div class="stat-block">
+        <span class="stat-label">Allied Factions / Houses</span>
+        <span class="stat-value">N/A</span>
       </div>
-      <div class="fact-card">
-        <span class="fact-label">Enemy Factions / Houses</span>
-        <span class="fact-value">N/A</span>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-block">
+        <span class="stat-label">Enemy Factions / Houses</span>
+        <span class="stat-value">N/A</span>
       </div>
-      <div class="fact-card">
-        <span class="fact-label">Officiality Status</span>
-        <span class="fact-value">Unofficial</span>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-block">
+        <span class="stat-label">Officiality Status</span>
+        <span class="stat-value">Unofficial</span>
       </div>
-      <div class="fact-card">
-        <span class="fact-label">Territories Claimed</span>
-        <span class="fact-value">N/A</span>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-block">
+        <span class="stat-label">Territories Claimed</span>
+        <span class="stat-value">N/A</span>
       </div>
     </div>
   </section>
 
-  <section id="promotion-guide" class="section">
-    <h2 class="section-title">Promotion Guide</h2>
+  <section id="promotion-guide" class="section-cinematic">
+    <div class="section-frame">
+      <span class="eyebrow-pill" data-reveal>The Ladder</span>
+      <h2 class="section-heading reveal-mask" data-reveal-mask>
+        <span class="reveal-mask-inner">Promotion Guide</span>
+      </h2>
+      <p class="section-lede" data-reveal>Eight ranks stand between a new levy and the Lord Marshal of Blackhaven.</p>
+    </div>
 
     <div class="promo-ladder">
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">1</span>
         <h3 class="promo-rank">Levy</h3>
         <p class="promo-req">Starting rank. You've taken your oath and begun your service.</p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">2</span>
         <h3 class="promo-rank">Swordsman</h3>
         <p class="promo-req">Attend 2 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">3</span>
         <h3 class="promo-rank">Man-at-Arms</h3>
         <p class="promo-req">Attend 4 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">4</span>
         <h3 class="promo-rank">Serjeant</h3>
         <p class="promo-req">Attend 5 events or deployments, logged in <code class="channel-tag">#activity-log</code>.</p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">5</span>
         <h3 class="promo-rank">Master-at-Arms</h3>
         <p class="promo-req">
@@ -233,37 +254,41 @@
       </div>
     </div>
 
-    <div class="promo-fork">
+    <div class="promo-fork" data-reveal>
       From here, the path forks. You may become a <strong>Squire</strong> or a <strong>Guardsman</strong>
       &mdash; each track answers to its own Commandant of Blackhaven.
     </div>
 
     <div class="promo-branches">
-      <div class="promo-branch">
-        <h3 class="promo-branch-title">Knighthood Path</h3>
-        <p class="promo-branch-line"><strong>Squire</strong> &mdash; Must be chosen by a knight, at any rank.</p>
-        <p class="promo-branch-line"><strong>Knight</strong> &mdash; Must pass the knighthood trials and be knighted in-game.</p>
-        <p class="promo-branch-line"><strong>Commandant of Blackhaven</strong> &mdash; Heads the Knighthood. Chosen by the Lord Marshal or higher, with authority over the division.</p>
-        <p class="promo-note">All knights are required to attend their squire's official knighting, as a sign of respect and professionalism.</p>
+      <div class="bezel-outer is-card" data-reveal>
+        <div class="bezel-inner">
+          <h3 class="promo-branch-title">Knighthood Path</h3>
+          <p class="promo-branch-line"><strong>Squire</strong> &mdash; Must be chosen by a knight, at any rank.</p>
+          <p class="promo-branch-line"><strong>Knight</strong> &mdash; Must pass the knighthood trials and be knighted in-game.</p>
+          <p class="promo-branch-line"><strong>Commandant of Blackhaven</strong> &mdash; Heads the Knighthood. Chosen by the Lord Marshal or higher, with authority over the division.</p>
+          <p class="promo-note">All knights are required to attend their squire's official knighting, as a sign of respect and professionalism.</p>
+        </div>
       </div>
 
-      <div class="promo-branch">
-        <h3 class="promo-branch-title">Guardsman Path</h3>
-        <p class="promo-branch-line"><strong>Blackhaven Guardsman</strong> &mdash; Must pass an elite tryout.</p>
-        <p class="promo-branch-line"><strong>Commandant of Blackhaven</strong> &mdash; Heads the Blackhaven Guard. Chosen by the Lord Marshal or higher; answers only to the Lineage or higher.</p>
-        <p class="promo-note">All Guardsmen are required to take an Oath of Silence.</p>
+      <div class="bezel-outer is-card" data-reveal>
+        <div class="bezel-inner">
+          <h3 class="promo-branch-title">Guardsman Path</h3>
+          <p class="promo-branch-line"><strong>Blackhaven Guardsman</strong> &mdash; Must pass an elite tryout.</p>
+          <p class="promo-branch-line"><strong>Commandant of Blackhaven</strong> &mdash; Heads the Blackhaven Guard. Chosen by the Lord Marshal or higher; answers only to the Lineage or higher.</p>
+          <p class="promo-note">All Guardsmen are required to take an Oath of Silence.</p>
+        </div>
       </div>
     </div>
 
-    <div class="promo-ladder">
+    <div class="promo-ladder promo-continuation">
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">6</span>
         <h3 class="promo-rank">Blackhaven Commander</h3>
         <p class="promo-req">Chosen by the Lord Marshal or higher. Holds authority over both the Knighthood and the Main Force.</p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">7</span>
         <h3 class="promo-rank">Marshal</h3>
         <p class="promo-req">
@@ -272,7 +297,7 @@
         </p>
       </div>
       <div class="promo-connector" aria-hidden="true"></div>
-      <div class="promo-step">
+      <div class="promo-step" data-reveal>
         <span class="promo-badge">8</span>
         <h3 class="promo-rank">Lord Marshal</h3>
         <p class="promo-req">Chosen by the Lord of House Dondarrion.</p>
@@ -280,18 +305,31 @@
     </div>
   </section>
 
-  <section id="family-tree" class="section section-alt">
-    <h2 class="section-title">Family Tree</h2>
-    <div class="family-tree-diagram">
-      <div class="family-node male root">Lord Rykard Dondarrion</div>
+  <section id="family-tree" class="section-cinematic is-alt">
+    <div class="section-frame">
+      <span class="eyebrow-pill" data-reveal>The Dondarrion Line</span>
+      <h2 class="section-heading reveal-mask" data-reveal-mask>
+        <span class="reveal-mask-inner">Family Tree</span>
+      </h2>
+      <p class="section-lede" data-reveal>The line begins with its Lord. The rest will be written in time.</p>
     </div>
-    <p class="placeholder-text">The rest of the Dondarrion line will be added soon.</p>
+
+    <div class="bezel-outer is-card portrait-plate" data-reveal>
+      <div class="bezel-inner portrait-plate-inner">
+        <span class="portrait-mark" aria-hidden="true">&#9889;</span>
+        <h3 class="portrait-name">Lord Rykard Dondarrion</h3>
+        <span class="portrait-title">Lord of House Dondarrion</span>
+      </div>
+    </div>
+    <p class="placeholder-text" data-reveal>The rest of the Dondarrion line will be added soon.</p>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>Created by Ginxui</p>
+  <div class="footer-mark" aria-hidden="true">&#9889;</div>
+  <p class="footer-tagline">House Dondarrion &middot; Stormlands</p>
+  <p class="footer-credit">Created by Ginxui</p>
 </footer>
 
 <script src="assets/js/lightning.js"></script>

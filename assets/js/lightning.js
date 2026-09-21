@@ -19,8 +19,8 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Scroll-driven reveal choreography for [data-reveal] elements
-  var revealEls = document.querySelectorAll("[data-reveal]");
+  // Scroll-driven reveal choreography for [data-reveal] and [data-reveal-mask] elements
+  var revealEls = document.querySelectorAll("[data-reveal], [data-reveal-mask]");
   if (revealEls.length) {
     if (reduceMotion || !("IntersectionObserver" in window)) {
       revealEls.forEach(function (el) { el.classList.add("reveal-in"); });
@@ -53,6 +53,87 @@
     });
     sigilWrap.addEventListener("animationend", function () {
       sigilWrap.classList.remove("is-flipping");
+    });
+  }
+
+  // Scroll parallax for [data-parallax] elements (transform-only, rAF-throttled)
+  var parallaxEls = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  if (parallaxEls.length && !reduceMotion) {
+    var parallaxTicking = false;
+    var updateParallax = function () {
+      var vh = window.innerHeight;
+      parallaxEls.forEach(function (el) {
+        var factor = parseFloat(el.getAttribute("data-parallax")) || 0.1;
+        var rect = el.getBoundingClientRect();
+        var center = rect.top + rect.height / 2;
+        var offset = (center - vh / 2) * factor;
+        el.style.transform = "translateY(" + (-offset).toFixed(2) + "px)";
+      });
+      parallaxTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!parallaxTicking) {
+        requestAnimationFrame(updateParallax);
+        parallaxTicking = true;
+      }
+    }, { passive: true });
+    updateParallax();
+  }
+
+  // Pointer tilt for the cinematic helm frame
+  var tiltOuter = document.querySelector(".hierarchy-visual .bezel-outer.is-square");
+  var tiltInner = tiltOuter && tiltOuter.querySelector(".bezel-inner");
+  if (tiltOuter && tiltInner && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var maxTilt = 7;
+    tiltOuter.addEventListener("pointermove", function (e) {
+      var rect = tiltOuter.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      tiltInner.style.transform =
+        "rotateY(" + (px * maxTilt).toFixed(2) + "deg) rotateX(" + (-py * maxTilt).toFixed(2) + "deg)";
+    });
+    tiltOuter.addEventListener("pointerleave", function () {
+      tiltInner.style.transform = "rotateY(0deg) rotateX(0deg)";
+    });
+  }
+
+  // Scrollspy: active nav link + sliding glow indicator
+  var navLinksEl = document.getElementById("navLinks");
+  var navIndicator = document.querySelector(".nav-indicator");
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main > section[id]"));
+  if (sections.length && navLinksEl && "IntersectionObserver" in window) {
+    var navLinkMap = {};
+    navLinksEl.querySelectorAll("a[href^='#']").forEach(function (a) {
+      navLinkMap[a.getAttribute("href").slice(1)] = a;
+    });
+
+    var moveIndicator = function (link) {
+      if (!navIndicator || !link) return;
+      var linkRect = link.getBoundingClientRect();
+      var listRect = navLinksEl.getBoundingClientRect();
+      navIndicator.style.opacity = "1";
+      navIndicator.style.width = linkRect.width + "px";
+      navIndicator.style.transform = "translateX(" + (linkRect.left - listRect.left).toFixed(2) + "px)";
+    };
+
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var link = navLinkMap[entry.target.id];
+          if (!link) return;
+          navLinksEl.querySelectorAll("a").forEach(function (a) { a.classList.remove("is-active"); });
+          link.classList.add("is-active");
+          moveIndicator(link);
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+    sections.forEach(function (s) { spy.observe(s); });
+
+    window.addEventListener("resize", function () {
+      var active = navLinksEl.querySelector("a.is-active");
+      if (active) moveIndicator(active);
     });
   }
 
