@@ -33,146 +33,139 @@
 <div id="flash-overlay" aria-hidden="true"></div>
 
 <div id="knightHelm" class="knight-helm" aria-hidden="true">
-  <svg viewBox="0 0 220 340" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
+  <svg viewBox="-20 -160 320 500" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round">
     <defs>
-      <linearGradient id="helmMetal" x1="10%" y1="0%" x2="95%" y2="100%">
+      <linearGradient id="helmMetal" x1="15%" y1="0%" x2="90%" y2="100%">
         <stop offset="0%" stop-color="#fbf9ff"/>
         <stop offset="40%" stop-color="#c4b5fd"/>
         <stop offset="100%" stop-color="#3b0764"/>
       </linearGradient>
     </defs>
 
-    <!-- Plume: big dramatic sweep -->
-    <g opacity="0.94" stroke="url(#helmMetal)">
-      <path d="M112 18 C 98 -46 44 -84 -20 -70 C 24 -78 62 -60 84 -20" stroke-width="1.6"/>
-      <path d="M108 20 C 86 -38 38 -68 -12 -58 C 26 -64 58 -48 78 -10" stroke-width="1.5"/>
-      <path d="M104 24 C 84 -26 42 -50 2 -42 C 34 -46 60 -32 76 2" stroke-width="1.35"/>
-      <path d="M100 28 C 84 -10 50 -28 16 -22 C 42 -26 62 -14 72 10" stroke-width="1.2"/>
-      <path d="M97 31 C 85 8 60 -6 34 -2 C 54 -6 70 4 76 22" stroke-width="1.05"/>
-      <path d="M104 8 C 90 -30 52 -54 12 -48" stroke-width="0.7" opacity="0.6"/>
-      <path d="M100 18 C 86 -14 54 -32 22 -28" stroke-width="0.7" opacity="0.6"/>
-      <path d="M96 27 C 84 2 58 -12 32 -10" stroke-width="0.7" opacity="0.6"/>
+    <!-- Plume: sweeps up-right, curls into a poof -->
+    <g stroke="url(#helmMetal)">
+      <path d="M140 12 C 150 -40 190 -78 245 -86 C 210 -80 185 -60 170 -30" stroke-width="1.6" opacity="0.9"/>
+      <path d="M138 14 C 152 -30 188 -64 236 -74" stroke-width="1.4" opacity="0.85"/>
+      <path d="M136 17 C 150 -20 180 -48 220 -58" stroke-width="1.25" opacity="0.8"/>
+      <path d="M134 21 C 146 -8 170 -30 202 -38" stroke-width="1.1" opacity="0.75"/>
+      <path d="M132 25 C 142 4 160 -14 184 -20" stroke-width="1" opacity="0.7"/>
+      <!-- poof cluster: overlapping rounded lobes -->
+      <path d="M172 -66 C 168 -84 180 -100 198 -98 C 212 -96 220 -82 216 -66 C 212 -52 196 -46 182 -52 C 174 -56 170 -60 172 -66 Z" stroke-width="1.3" opacity="0.85"/>
+      <path d="M198 -84 C 196 -102 210 -118 230 -114 C 246 -110 252 -94 244 -80 C 238 -68 222 -64 208 -70 C 200 -74 196 -78 198 -84 Z" stroke-width="1.3" opacity="0.85"/>
+      <path d="M220 -66 C 220 -84 236 -98 254 -92 C 268 -87 272 -72 262 -60 C 254 -50 240 -48 228 -54 C 222 -58 218 -60 220 -66 Z" stroke-width="1.25" opacity="0.82"/>
+      <path d="M212 -40 C 214 -58 232 -70 248 -62 C 260 -56 262 -42 252 -32 C 244 -24 230 -24 220 -30 C 214 -34 210 -36 212 -40 Z" stroke-width="1.2" opacity="0.78"/>
+      <path d="M192 -24 C 196 -40 212 -50 226 -42 C 236 -36 238 -24 230 -16 C 222 -8 210 -8 202 -14 C 196 -18 190 -20 192 -24 Z" stroke-width="1.15" opacity="0.75"/>
+      <path d="M178 -8 C 184 -22 198 -30 210 -22 C 218 -16 220 -6 212 2 C 206 8 194 8 188 2 C 182 -2 176 -4 178 -8 Z" stroke-width="1.1" opacity="0.7"/>
+      <!-- fine barb lines through the poof for feather texture -->
+      <g stroke-width="0.6" opacity="0.5">
+        <path d="M180 -80 C 190 -88 202 -92 212 -90"/>
+        <path d="M196 -60 C 208 -70 222 -74 234 -70"/>
+        <path d="M210 -38 C 220 -46 232 -48 242 -44"/>
+        <path d="M196 -18 C 204 -26 214 -28 222 -24"/>
+      </g>
     </g>
 
-    <!-- Skull dome -->
-    <path d="M110 18
-             C 78 18 58 46 56 82
-             C 55 96 57 108 62 118
-             L 158 118
-             C 163 108 165 96 164 82
-             C 162 46 142 18 110 18 Z"
+    <!-- Skull dome, turned 3/4 -->
+    <path d="M140 10
+             C 108 10 82 30 74 64
+             C 70 84 72 100 79 112
+             L 192 118
+             C 206 110 213 94 210 70
+             C 206 34 174 10 140 10 Z"
           stroke="url(#helmMetal)" stroke-width="2.6"/>
 
-    <!-- Comb ridge + filigree spine -->
-    <path d="M110 18 L110 116" stroke="url(#helmMetal)" stroke-width="2" opacity="0.85"/>
-    <path d="M100 24 Q110 16 120 24" stroke="url(#helmMetal)" stroke-width="1.6"/>
-    <path d="M104 40 Q110 34 116 40 M104 56 Q110 50 116 56 M104 72 Q110 66 116 72 M104 88 Q110 82 116 88 M104 104 Q110 98 116 104"
-          stroke="url(#helmMetal)" stroke-width="0.7" opacity="0.7"/>
+    <!-- Comb ridge -->
+    <path d="M138 10 C 134 40 132 78 134 114" stroke="url(#helmMetal)" stroke-width="2" opacity="0.85"/>
+    <path d="M126 18 Q138 8 150 18" stroke="url(#helmMetal)" stroke-width="1.6"/>
 
-    <!-- Skull rivets -->
-    <circle cx="70" cy="60" r="2" fill="url(#helmMetal)"/>
-    <circle cx="150" cy="60" r="2" fill="url(#helmMetal)"/>
-    <circle cx="63" cy="95" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="157" cy="95" r="1.8" fill="url(#helmMetal)"/>
+    <!-- Skull rivets + filigree -->
+    <circle cx="188" cy="52" r="2" fill="url(#helmMetal)"/>
+    <circle cx="196" cy="88" r="1.8" fill="url(#helmMetal)"/>
+    <path d="M100 36 C 104 31 111 31 113 36 C 115 41 111 45 106 44" stroke="url(#helmMetal)" stroke-width="1"/>
+    <path d="M160 30 C 164 25 171 26 172 31 C 173 36 168 39 163 38" stroke="url(#helmMetal)" stroke-width="1"/>
+    <path d="M170 54 C 175 49 183 49 185 55 C 187 61 182 65 176 64" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
+    <path d="M178 80 C 183 76 190 77 191 82" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
+    <path d="M92 60 C 96 55 103 56 104 61" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
+    <path d="M86 86 C 91 82 97 83 98 88" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
 
-    <!-- Scrollwork flourishes across the whole dome face -->
-    <path d="M74 44 C 78 39 85 39 87 44 C 89 49 85 53 80 52 C 76 51 75 48 77 46" stroke="url(#helmMetal)" stroke-width="1"/>
-    <path d="M146 44 C 142 39 135 39 133 44 C 131 49 135 53 140 52 C 144 51 145 48 143 46" stroke="url(#helmMetal)" stroke-width="1"/>
-    <path d="M96 30 C 100 26 106 26 108 30" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
-    <path d="M112 30 C 114 26 120 26 124 30" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
-    <path d="M80 68 C 84 63 91 63 92 68 C 93 73 89 76 84 75" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.85"/>
-    <path d="M140 68 C 136 63 129 63 128 68 C 127 73 131 76 136 75" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.85"/>
-    <path d="M86 92 C 90 88 96 88 97 92" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <path d="M134 92 C 130 88 124 88 123 92" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <circle cx="90" cy="58" r="3" stroke="url(#helmMetal)" stroke-width="0.6" opacity="0.5"/>
-    <circle cx="130" cy="58" r="3" stroke="url(#helmMetal)" stroke-width="0.6" opacity="0.5"/>
-
-    <!-- Cross-hatch shading, shadow side of dome -->
+    <!-- Cross-hatch: shadow side (far/right, turning away) -->
     <g stroke="#2e1065" stroke-width="0.75" opacity="0.6">
-      <path d="M136 52 l8 8 M140 62 l8 8 M142 74 l8 8 M144 86 l8 8 M142 98 l8 8"/>
-      <path d="M142 48 l8 8 M146 58 l8 8 M148 70 l8 8 M150 82 l8 8 M148 94 l8 8"/>
-      <path d="M148 56 l7 7 M152 68 l7 7 M154 80 l7 7"/>
+      <path d="M182 40 l8 8 M186 52 l8 8 M188 64 l8 8 M186 76 l8 8 M182 88 l8 8"/>
+      <path d="M190 36 l7 7 M194 48 l7 7 M196 60 l7 7 M194 72 l7 7 M190 84 l7 7"/>
     </g>
 
-    <!-- Visor (hinged band) -->
-    <path d="M58 118 L162 118 L160 148 L60 148 Z" stroke="url(#helmMetal)" stroke-width="2.4"/>
-    <path d="M58 118 L162 118" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.6"/>
+    <!-- Cheek boss (the big shiny stud/rivet) -->
+    <circle cx="118" cy="140" r="9" stroke="url(#helmMetal)" stroke-width="2.2"/>
+    <circle cx="118" cy="140" r="4" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.8"/>
+    <path d="M118 133 L118 147 M111 140 L125 140" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.6"/>
 
-    <!-- Hinge pins -->
-    <circle cx="56" cy="132" r="4" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
-    <circle cx="164" cy="132" r="4" fill="#0a0714" stroke="url(#helmMetal)" stroke-width="2"/>
+    <!-- Visor / beak, protrudes down-left, contained under the near side of the dome -->
+    <path d="M79 112
+             C 60 118 44 130 36 150
+             C 29 168 30 188 42 202
+             C 50 211 61 214 72 210
+             C 92 203 108 188 114 168
+             C 118 152 116 132 105 118
+             C 98 110 88 107 79 112
+             Z"
+          stroke="url(#helmMetal)" stroke-width="2.5"/>
 
-    <!-- Sight slits -->
-    <path d="M72 130 L98 128" stroke="url(#helmMetal)" stroke-width="3"/>
-    <path d="M122 128 L148 130" stroke="url(#helmMetal)" stroke-width="3"/>
+    <!-- Brow vent slits along the top of the visor -->
+    <path d="M92 120 L106 117 M112 116 L126 113 M132 112 L146 109" stroke="url(#helmMetal)" stroke-width="2"/>
+
+    <!-- Beak ridge -->
+    <path d="M75 116 C 58 128 46 144 40 164 C 36 180 38 196 48 206" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Breathing grille (lower beak) -->
+    <circle cx="54" cy="168" r="2.4" stroke="url(#helmMetal)" stroke-width="1.4"/>
+    <circle cx="50" cy="180" r="2.2" stroke="url(#helmMetal)" stroke-width="1.3"/>
+    <circle cx="58" cy="188" r="2" stroke="url(#helmMetal)" stroke-width="1.2"/>
+    <circle cx="48" cy="192" r="1.8" stroke="url(#helmMetal)" stroke-width="1.1"/>
+    <circle cx="62" cy="198" r="1.8" stroke="url(#helmMetal)" stroke-width="1.1"/>
 
     <!-- Scrollwork across visor -->
-    <path d="M64 140 C 68 136 74 137 74 141 C 74 145 69 146 66 144" stroke="url(#helmMetal)" stroke-width="0.9"/>
-    <path d="M156 140 C 152 136 146 137 146 141 C 146 145 151 146 154 144" stroke="url(#helmMetal)" stroke-width="0.9"/>
-    <path d="M96 122 C 99 119 104 119 106 122" stroke="url(#helmMetal)" stroke-width="0.75" opacity="0.75"/>
-    <path d="M114 122 C 116 119 121 119 124 122" stroke="url(#helmMetal)" stroke-width="0.75" opacity="0.75"/>
+    <path d="M60 130 C 65 125 73 126 74 132 C 75 138 69 141 63 139" stroke="url(#helmMetal)" stroke-width="1"/>
+    <path d="M80 148 C 85 143 93 144 94 150" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
+    <path d="M70 170 C 75 166 82 167 83 172" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
+    <path d="M88 190 C 92 186 98 187 99 192" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
+    <path d="M140 130 C 145 126 152 127 153 132 C 154 137 149 140 144 138" stroke="url(#helmMetal)" stroke-width="0.9" opacity="0.85"/>
+    <path d="M160 148 C 165 144 171 145 172 150" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
 
-    <!-- Hatch under visor -->
+    <!-- Hatch: underside of visor (shadow) -->
     <g stroke="#2e1065" stroke-width="0.75" opacity="0.55">
-      <path d="M138 138 l6 6 M144 132 l6 6 M150 138 l6 6 M156 132 l5 5"/>
+      <path d="M150 140 l7 7 M156 150 l7 7 M162 160 l7 7 M166 172 l6 6"/>
+      <path d="M100 150 l6 6 M96 162 l6 6 M92 174 l6 6"/>
     </g>
 
-    <!-- Bevor / chin piece -->
-    <path d="M60 148
-             C 58 168 60 188 70 202
-             C 82 216 98 222 110 222
-             C 122 222 138 216 150 202
-             C 160 188 162 168 160 148
-             Z" stroke="url(#helmMetal)" stroke-width="2.4"/>
-
-    <path d="M110 150 L110 218" stroke="url(#helmMetal)" stroke-width="1.2" opacity="0.5"/>
-
-    <!-- Breath grille -->
-    <circle cx="86" cy="168" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="98" cy="172" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="122" cy="172" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="134" cy="168" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="90" cy="186" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="105" cy="190" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="115" cy="190" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-    <circle cx="130" cy="186" r="2.2" stroke="url(#helmMetal)" stroke-width="1.4"/>
-
-    <!-- Scrollwork across bevor -->
-    <path d="M76 200 C 80 196 86 197 86 201 C 86 205 81 206 78 204" stroke="url(#helmMetal)" stroke-width="0.9"/>
-    <path d="M144 200 C 140 196 134 197 134 201 C 134 205 139 206 142 204" stroke="url(#helmMetal)" stroke-width="0.9"/>
-    <path d="M78 158 C 82 154 88 155 88 159" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <path d="M142 158 C 138 154 132 155 132 159" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
-    <path d="M96 210 C 100 207 105 207 107 210" stroke="url(#helmMetal)" stroke-width="0.75" opacity="0.7"/>
-    <path d="M114 210 C 116 207 121 207 124 210" stroke="url(#helmMetal)" stroke-width="0.75" opacity="0.7"/>
-
-    <!-- Chin hatching (shadow side) -->
-    <g stroke="#2e1065" stroke-width="0.75" opacity="0.6">
-      <path d="M130 158 l6 6 M134 168 l6 6 M136 180 l6 6 M134 192 l6 6 M130 202 l5 5"/>
-      <path d="M136 154 l6 6 M140 164 l6 6 M142 176 l6 6 M140 188 l6 6"/>
-    </g>
-
-    <!-- Gorget (articulated neck lames) -->
-    <path d="M74 220 C 68 230 62 238 54 244 Q 110 260 166 244 C 158 238 152 230 146 220 Z"
+    <!-- Gorget, articulated, flares right/back -->
+    <path d="M70 210 C 78 220 92 226 108 226 C 132 226 158 218 178 206
+             C 190 199 198 192 202 184"
           stroke="url(#helmMetal)" stroke-width="2.2"/>
-    <path d="M62 236 Q 110 250 158 236" stroke="url(#helmMetal)" stroke-width="1.4" opacity="0.6"/>
-
-    <path d="M56 244 C 50 252 46 258 42 262 Q 110 276 178 262 C 174 258 170 252 164 244 Z"
+    <path d="M62 205 C 66 222 82 236 104 240 C 136 246 172 236 196 214
+             C 206 205 212 194 212 184"
           stroke="url(#helmMetal)" stroke-width="2.2"/>
-
-    <!-- Scrollwork across gorget -->
-    <path d="M84 232 C 88 228 94 229 94 233 C 94 237 89 238 86 236" stroke="url(#helmMetal)" stroke-width="0.85"/>
-    <path d="M136 232 C 132 228 126 229 126 233 C 126 237 131 238 134 236" stroke="url(#helmMetal)" stroke-width="0.85"/>
-    <path d="M100 226 C 104 223 108 223 110 226 C 112 223 116 223 120 226" stroke="url(#helmMetal)" stroke-width="0.75" opacity="0.75"/>
+    <path d="M56 212 C 58 232 76 250 102 256 C 140 264 182 252 210 226
+             C 220 216 226 204 224 192"
+          stroke="url(#helmMetal)" stroke-width="2.2"/>
 
     <!-- Gorget rivets -->
-    <circle cx="60" cy="232" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="160" cy="232" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="50" cy="254" r="1.8" fill="url(#helmMetal)"/>
-    <circle cx="170" cy="254" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="100" cy="238" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="150" cy="234" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="190" cy="216" r="1.8" fill="url(#helmMetal)"/>
+    <circle cx="96" cy="252" r="1.6" fill="url(#helmMetal)"/>
+    <circle cx="160" cy="252" r="1.6" fill="url(#helmMetal)"/>
+    <circle cx="204" cy="220" r="1.6" fill="url(#helmMetal)"/>
 
-    <!-- Gorget hatching -->
-    <g stroke="#2e1065" stroke-width="0.75" opacity="0.55">
-      <path d="M142 246 l6 5 M148 252 l6 5 M154 258 l6 5 M160 250 l5 4"/>
+    <!-- Scrollwork on gorget -->
+    <path d="M100 216 C 104 212 110 213 110 218" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
+    <path d="M140 210 C 144 206 150 207 150 212" stroke="url(#helmMetal)" stroke-width="0.85" opacity="0.8"/>
+    <path d="M108 244 C 112 240 118 241 118 246" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
+    <path d="M150 240 C 154 236 160 237 160 242" stroke="url(#helmMetal)" stroke-width="0.8" opacity="0.75"/>
+
+    <!-- Hatch on gorget shadow (right/back) -->
+    <g stroke="#2e1065" stroke-width="0.7" opacity="0.5">
+      <path d="M186 200 l6 5 M192 208 l6 5 M198 198 l5 4"/>
+      <path d="M200 218 l6 5 M206 226 l5 4"/>
     </g>
   </svg>
 </div>
